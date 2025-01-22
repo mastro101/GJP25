@@ -63,7 +63,10 @@ namespace Eastermaster
         public bool CheckTrigger()
         {
             if (objTransform)
+            {
+                differenceVector = objTransform.position - transform.position;
                 return CheckDistance(objTransform) && CheckAngle(objTransform) && CheckNoObstacle(objTransform);
+            }
 
             return false;
         }
@@ -89,14 +92,12 @@ namespace Eastermaster
 
         public bool CheckDistance(Transform t)
         {
-            differenceVector = t.position - transform.position;
             dist = differenceVector.magnitude;
             return dist <= radius;
         }
 
         public bool CheckAngle(Transform t)
         {
-            differenceVector = t.position - transform.position;
             angleViewToObj = Vector3.Angle(transform.forward, differenceVector);
 
             return angleViewToObj <= viewAngle / 2f;
