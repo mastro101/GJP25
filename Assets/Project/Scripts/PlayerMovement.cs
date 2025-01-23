@@ -1,4 +1,6 @@
+using Cinemachine;
 using Eastermaster;
+using UnityEditor.SceneManagement;
 using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.InputSystem.Controls;
@@ -6,36 +8,43 @@ using UnityEngine.InputSystem.LowLevel;
 using UnityEngine.InputSystem.Users;
 using UnityEngine.Jobs;
 
+[RequireComponent(typeof(Rigidbody))]
 public class PlayerMovement : MonoBehaviour
 {
     [SerializeField] float speed;
-    [SerializeField] float cameraSpeed;
+    [SerializeField] float jumpForce;
+    [SerializeField] CinemachineFreeLook freeCamera;
+    [SerializeField] CinemachineVirtualCamera lockOnCamera;
+    //[SerializeField] float cameraSpeed;
     [SerializeField] ViewTrigger viewTriggerForLockOn;
 
+    Rigidbody rb;
     Camera cam;
-    Transform cameraPivot;
     InputAction moveAction;
     InputAction lookAction;
     InputAction lockAction;
+    InputAction jumpAction;
     Vector2 inputDirection;
     Vector2 lookDirection;
     bool lockOn;
     IDetectable lockOnDetectable;
 
-    float cameraSpeedMouse => cameraSpeed / 2;
+    //float cameraSpeedMouse => cameraSpeed / 2;
     Vector3 center => transform.position;
 
     private void Awake()
     {
+        rb = GetComponent<Rigidbody>();
         cam = Camera.main;
-        cameraPivot = cam.transform.parent;
         moveAction = InputSystem.actions.FindAction("Player/Move");
         lookAction = InputSystem.actions.FindAction("Player/Look");
         lockAction = InputSystem.actions.FindAction("Player/Lock");
         lockAction.performed += LockAction_performed;
+        jumpAction = InputSystem.actions.FindAction("Player/Jump");
+        jumpAction.performed += JumpAction_performed;
+
         lockOn = false;
     }
-
 
     private void OnEnable()
     {
@@ -46,6 +55,14 @@ public class PlayerMovement : MonoBehaviour
     {
         InputUser.onChange -= InputUser_onChange;
         lockAction.performed -= LockAction_performed;
+        jumpAction.performed -= JumpAction_performed;
+    }
+
+    const float deadzoneJump = 0.01f;
+    private void JumpAction_performed(InputAction.CallbackContext obj)
+    {
+        if (rb.linearVelocity.y > -deadzoneJump && rb.linearVelocity.y < deadzoneJump)
+            rb.linearVelocity += Vector3.up * jumpForce;
     }
 
     private void LockAction_performed(InputAction.CallbackContext obj)
@@ -54,6 +71,8 @@ public class PlayerMovement : MonoBehaviour
         {
             lockOn = false;
             lockOnDetectable = null;
+            freeCamera.gameObject.SetActive(true);
+            lockOnCamera.gameObject.SetActive(false);
         }
         else
         {
@@ -61,6 +80,8 @@ public class PlayerMovement : MonoBehaviour
             IDetectable[] detectables = viewTriggerForLockOn.GetDetectedObjects();
             if (detectables.Length > 0)
                 lockOnDetectable = viewTriggerForLockOn.GetDetectedObjects()[0];
+            lockOnCamera.gameObject.SetActive(true);
+            freeCamera.gameObject.SetActive(false);
         }
 
     }
@@ -92,12 +113,13 @@ public class PlayerMovement : MonoBehaviour
         if (lockOn && lockOnDetectable != null)
         {
             lookDirection = lockOnDetectable.transform.position;
-            cameraPivot.LookAt(Vector3.Lerp(cameraPivot.transform.position + cameraPivot.transform.forward, lockOnDetectable.transform.position, .50f));
+            //Vector3.Lerp(cameraPivot.transform.position + cameraPivot.transform.forward, lockOnDetectable.transform.position, .2f)
+            //cameraPivot.LookAt(Vector3.Lerp((cameraPivot.transform.position + cameraPivot.transform.forward) * lookDirection.magnitude, new Vector3(lookDirection.x, 0, lookDirection.y), 0.2f ) * -1);
         }
         else
         {
             lookDirection = lookAction.ReadValue<Vector2>();
-            cameraPivot.Rotate(new Vector3(0, lookDirection.x, 0) * (mouse ? cameraSpeedMouse : cameraSpeed) * Time.deltaTime, Space.Self);
+            //cameraPivot.Rotate(new Vector3(0, lookDirection.x, 0) * (mouse ? cameraSpeedMouse : cameraSpeed) * Time.deltaTime, Space.Self);
 
         }
 
@@ -107,10 +129,16 @@ public class PlayerMovement : MonoBehaviour
     private void FixedUpdate()
     {
         Vector3 translation = cam.transform.rotation * (new Vector3(inputDirection.x, 0, inputDirection.y) * speed * Time.fixedDeltaTime);
-        transform.Translate(translation, Space.World);
+        translation = new Vector3(translation.x, 0, translation.z);
         if (lockOn && lockOnDetectable != null)
-            transform.LookAt(lockOnDetectable.transform.position);
+        {
+            transform.LookAt(new Vector3(lockOnDetectable.transform.position.x, 0, lockOnDetectable.transform.position.z));
+        }
         else
+        {
             transform.LookAt(Vector3.Lerp(center + transform.forward, center + translation, .75f));
+        }
+        //transform.Translate(translation, Space.World);
+        rb.MovePosition(center + translation);
     }
 }
