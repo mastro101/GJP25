@@ -11,8 +11,9 @@ using UnityEngine.Jobs;
 [RequireComponent(typeof(Rigidbody))]
 public class PlayerMovement : MonoBehaviour
 {
-    [SerializeField] float speed;
-    [SerializeField] float jumpForce;
+    [SerializeField] float speed = 10;
+    [SerializeField] float jumpForce = 7.5f;
+    [SerializeField] float dashForce = 500;
     [SerializeField] CinemachineFreeLook freeCamera;
     [SerializeField] CinemachineVirtualCamera lockOnCamera;
     //[SerializeField] float cameraSpeed;
@@ -24,6 +25,7 @@ public class PlayerMovement : MonoBehaviour
     InputAction lookAction;
     InputAction lockAction;
     InputAction jumpAction;
+    InputAction dashAction;
     Vector2 inputDirection;
     Vector2 lookDirection;
     bool lockOn;
@@ -42,6 +44,8 @@ public class PlayerMovement : MonoBehaviour
         lockAction.performed += LockAction_performed;
         jumpAction = InputSystem.actions.FindAction("Player/Jump");
         jumpAction.performed += JumpAction_performed;
+        dashAction = InputSystem.actions.FindAction("Player/Dash");
+        dashAction.performed += DashAction_performed;
 
         lockOn = false;
     }
@@ -56,6 +60,11 @@ public class PlayerMovement : MonoBehaviour
         InputUser.onChange -= InputUser_onChange;
         lockAction.performed -= LockAction_performed;
         jumpAction.performed -= JumpAction_performed;
+    }
+
+    private void DashAction_performed(InputAction.CallbackContext obj)
+    {
+        rb.AddForce(transform.forward * dashForce);
     }
 
     const float deadzoneJump = 0.01f;
@@ -86,42 +95,42 @@ public class PlayerMovement : MonoBehaviour
 
     }
 
-    bool mouse = true;
+    //bool mouse = true;
     private void InputUser_onChange(InputUser arg1, InputUserChange arg2, InputDevice arg3)
     {
-        switch (arg2)
-        {
-            case InputUserChange.DevicePaired:
-                Debug.Log(arg3.displayName);
-                Debug.Log(arg3.name);
-                if (arg3.name == "Mouse" || arg3.name == "Keyboard")
-                {
-                    mouse = true;
-                }
-                else
-                {
-                    mouse = false;
-                }
-                break;
-        }
+        //switch (arg2)
+        //{
+        //    case InputUserChange.DevicePaired:
+        //        Debug.Log(arg3.displayName);
+        //        Debug.Log(arg3.name);
+        //        if (arg3.name == "Mouse" || arg3.name == "Keyboard")
+        //        {
+        //            mouse = true;
+        //        }
+        //        else
+        //        {
+        //            mouse = false;
+        //        }
+        //        break;
+        //}
     }
 
     private void Update()
     {
         inputDirection = moveAction.ReadValue<Vector2>();
 
-        if (lockOn && lockOnDetectable != null)
-        {
-            lookDirection = lockOnDetectable.transform.position;
-            //Vector3.Lerp(cameraPivot.transform.position + cameraPivot.transform.forward, lockOnDetectable.transform.position, .2f)
-            //cameraPivot.LookAt(Vector3.Lerp((cameraPivot.transform.position + cameraPivot.transform.forward) * lookDirection.magnitude, new Vector3(lookDirection.x, 0, lookDirection.y), 0.2f ) * -1);
-        }
-        else
-        {
-            lookDirection = lookAction.ReadValue<Vector2>();
-            //cameraPivot.Rotate(new Vector3(0, lookDirection.x, 0) * (mouse ? cameraSpeedMouse : cameraSpeed) * Time.deltaTime, Space.Self);
+        //if (lockOn && lockOnDetectable != null)
+        //{
+        //    lookDirection = lockOnDetectable.transform.position;
+        //    //Vector3.Lerp(cameraPivot.transform.position + cameraPivot.transform.forward, lockOnDetectable.transform.position, .2f)
+        //    //cameraPivot.LookAt(Vector3.Lerp((cameraPivot.transform.position + cameraPivot.transform.forward) * lookDirection.magnitude, new Vector3(lookDirection.x, 0, lookDirection.y), 0.2f ) * -1);
+        //}
+        //else
+        //{
+        //    lookDirection = lookAction.ReadValue<Vector2>();
+        //    //cameraPivot.Rotate(new Vector3(0, lookDirection.x, 0) * (mouse ? cameraSpeedMouse : cameraSpeed) * Time.deltaTime, Space.Self);
 
-        }
+        //}
 
     }
 
