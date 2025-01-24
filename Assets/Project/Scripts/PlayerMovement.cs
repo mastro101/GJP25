@@ -69,11 +69,11 @@ public class PlayerMovement : MonoBehaviour
     {
         if (dashTimer <= 0)
         {
-            rb.AddForce(transform.rotation * (new Vector3(inputDirection.x, 0, inputDirection.y) * dashForce), ForceMode.Impulse);
+            rb.AddForce(cam.transform.rotation * (new Vector3(inputDirection.x, 0, inputDirection.y) * dashForce), ForceMode.Impulse);
+            onDashStarted?.Invoke();
             dashTimer = dashCooldown;
         }
 
-        onDashStarted?.Invoke();
     }
 
     const float deadzoneJump = 0.01f;

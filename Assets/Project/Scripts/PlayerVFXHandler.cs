@@ -15,7 +15,7 @@ public class PlayerVFXHandler : MonoBehaviour
 
     void PlayDashVFX()
     {
-        DashVFX.
+        DashVFX.Play();
     }
 
     void OnDisable()
