@@ -14,12 +14,11 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField] float speed = 10;
     [SerializeField] float jumpForce = 7.5f;
     [SerializeField] float dashForce = 500;
+    [SerializeField] float dashCooldown = 2;
     [SerializeField] CinemachineFreeLook freeCamera;
     [SerializeField] CinemachineVirtualCamera lockOnCamera;
     //[SerializeField] float cameraSpeed;
     [SerializeField] ViewTrigger viewTriggerForLockOn;
-    [SerializeField] GameObject freeLookTarget;
-    public System.Action onDashStarted;
 
     Rigidbody rb;
     Camera cam;
@@ -28,6 +27,7 @@ public class PlayerMovement : MonoBehaviour
     InputAction lockAction;
     InputAction jumpAction;
     InputAction dashAction;
+    float dashTimer;
     Vector2 inputDirection;
     Vector2 lookDirection;
     bool lockOn;
@@ -48,7 +48,7 @@ public class PlayerMovement : MonoBehaviour
         jumpAction.performed += JumpAction_performed;
         dashAction = InputSystem.actions.FindAction("Player/Dash");
         dashAction.performed += DashAction_performed;
-
+        dashTimer = 0;
         lockOn = false;
     }
 
@@ -66,7 +66,11 @@ public class PlayerMovement : MonoBehaviour
 
     private void DashAction_performed(InputAction.CallbackContext obj)
     {
-        rb.AddForce(transform.rotation * (new Vector3(inputDirection.x, 0, inputDirection.y) * dashForce), ForceMode.Impulse);
+        if (dashTimer <= 0)
+        {
+            rb.AddForce(transform.forward * dashForce);
+            dashTimer = dashCooldown;
+        }
     }
 
     const float deadzoneJump = 0.01f;
@@ -120,7 +124,8 @@ public class PlayerMovement : MonoBehaviour
     private void Update()
     {
         inputDirection = moveAction.ReadValue<Vector2>();
-
+        if (dashTimer > 0)
+            dashTimer -= Time.deltaTime;
         //if (lockOn && lockOnDetectable != null)
         //{
         //    lookDirection = lockOnDetectable.transform.position;
