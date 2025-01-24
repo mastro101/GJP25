@@ -19,6 +19,7 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField] CinemachineVirtualCamera lockOnCamera;
     //[SerializeField] float cameraSpeed;
     [SerializeField] ViewTrigger viewTriggerForLockOn;
+    public System.Action onDashStarted;
 
     Rigidbody rb;
     Camera cam;
@@ -68,9 +69,11 @@ public class PlayerMovement : MonoBehaviour
     {
         if (dashTimer <= 0)
         {
-            rb.AddForce(transform.forward * dashForce);
+            rb.AddForce(transform.rotation * (new Vector3(inputDirection.x, 0, inputDirection.y) * dashForce), ForceMode.Impulse);
             dashTimer = dashCooldown;
         }
+
+        onDashStarted?.Invoke();
     }
 
     const float deadzoneJump = 0.01f;

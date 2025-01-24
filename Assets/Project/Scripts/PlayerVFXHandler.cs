@@ -3,19 +3,23 @@ using UnityEngine.InputSystem;
 
 public class PlayerVFXHandler : MonoBehaviour
 {
-    InputAction dash;
+    PlayerMovement playerMovement;
+    [SerializeField] ParticleSystem DashVFX;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
-    void Awake()
+    void OnEnable()
     {
-        dash = InputSystem.actions.FindAction("Player/Dash");
+        playerMovement = GetComponent<PlayerMovement>();
+        playerMovement.onDashStarted += PlayDashVFX;
     }
 
-
-
-    // Update is called once per frame
-    void Update()
+    void PlayDashVFX()
     {
-        
+        DashVFX.
+    }
+
+    void OnDisable()
+    {
+        playerMovement.onDashStarted -= PlayDashVFX;
     }
 }
