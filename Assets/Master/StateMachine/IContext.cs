@@ -4,5 +4,8 @@ using UnityEngine;
 
 namespace Eastermaster
 {
-    public interface IContext { }
+    public interface IContext
+    {
+        Transform transform { get; }
+    }
 }

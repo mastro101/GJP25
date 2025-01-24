@@ -6,6 +6,11 @@ namespace Eastermaster.TreeBehaviour
 {
     public class GenericTree : TreeBehaviour<IContext>
     {
-        protected override void SetContext() { }
+        [SerializeInterface(typeof(IContext))] GameObject ctx;
+
+        private void Start()
+        {
+            Init(ctx.GetComponent<IContext>());
+        }
     }
 }

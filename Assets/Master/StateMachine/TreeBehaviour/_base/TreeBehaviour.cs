@@ -9,32 +9,36 @@ namespace Eastermaster.TreeBehaviour
     {
         [SerializeField] bool loop;
 
-        TreeNode<T> currentNode;
-        TreeNode<T>[] nodes;
+        TreeNode<IContext> currentNode;
+        TreeNode<IContext>[] nodes;
         T ctx;
         NodeStatus currentStatus = NodeStatus.RUNNING;
+        bool active = false;
 
-        protected abstract void SetContext();
-
-        private void Awake()
+        protected virtual void SetContext(T _ctx)
         {
-            SetContext();
+            this.ctx = _ctx;
+        }
+
+        public void Init(T _ctx)
+        {
+            SetContext(_ctx);
             int l = transform.childCount;
-            nodes = this.GetComponentsInChildren<TreeNode<T>>();
-            foreach (TreeNode<T> node in nodes)
+            nodes = this.GetComponentsInChildren<TreeNode<IContext>>();
+            foreach (TreeNode<IContext> node in nodes)
             {
                 node.Init(ctx);
             }
             currentNode = nodes[0];
-        }
-
-        protected virtual void Start()
-        {
             currentNode.OnEnter();
+            active = true;
         }
 
         protected virtual void Update()
         {
+            if (!active)
+                return;
+
             if (loop)
             {
                 currentStatus = currentNode.Evaluate();
@@ -49,11 +53,14 @@ namespace Eastermaster.TreeBehaviour
 
         protected virtual void FixedUpdate()
         {
-            if (loop || currentStatus == NodeStatus.RUNNING)
+            if (!active)
+                return;
+
+            if (currentStatus == NodeStatus.RUNNING)
                 currentNode.OnFixedUpdate();
         }
 
-        public void ChangeNode(TreeNode<T> node)
+        public void ChangeNode(TreeNode<IContext> node)
         {
             if (!nodes.Contains(node))
                 return;

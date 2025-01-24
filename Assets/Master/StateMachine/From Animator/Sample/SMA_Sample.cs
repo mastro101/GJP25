@@ -31,5 +31,7 @@ namespace Eastermaster.StateMachineAnimator
         public GameObject go;
 
         public Action Next;
+
+        public Transform transform => go.transform;
     }
 }
