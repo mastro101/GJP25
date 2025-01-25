@@ -21,7 +21,7 @@ public class MoveToTargetNode : TreeNode<IContext>
         base.Evaluate();
         if (moved)
         {
-            if ((target.position - ctx.transform.position).magnitude <= offset)
+            if (CheckOnTarget())
                 return NodeStatus.SUCCESS;
 
             return NodeStatus.FAILUR;
@@ -29,9 +29,16 @@ public class MoveToTargetNode : TreeNode<IContext>
         return NodeStatus.RUNNING;
     }
 
+    bool CheckOnTarget()
+    {
+        return (target.position - ctx.transform.position).magnitude <= offset;
+    }
+
     public override void OnFixedUpdate()
     {
         base.OnFixedUpdate();
+        if (CheckOnTarget())
+            return;
         ctx.transform.Translate((target.position - ctx.transform.position).normalized * speed * Time.fixedDeltaTime);
     }
 }
