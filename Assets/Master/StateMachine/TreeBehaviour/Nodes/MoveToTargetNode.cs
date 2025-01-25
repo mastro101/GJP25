@@ -23,7 +23,6 @@ public class MoveToTargetNode : TreeNode<IContext>
             return NodeStatus.SUCCESS;
         if (moved)
         {
-            Debug.Log("fallito");
             return NodeStatus.FAILUR;
         }
         return NodeStatus.RUNNING;

@@ -66,7 +66,7 @@ public class PlayerMovement : MonoBehaviour
     {
         if (dashTimer <= 0 && inputDirection != Vector2.zero)
         {
-            rb.AddForce(cam.transform.rotation * (new Vector3(inputDirection.x, 0, inputDirection.y) * dashForce), ForceMode.Impulse);
+            rb.AddForce(cam.transform.rotation * (new Vector3(inputDirection.x, 0, inputDirection.y).normalized * dashForce), ForceMode.Impulse);
             onDashStarted?.Invoke();
             dashTimer = dashCooldown;
         }

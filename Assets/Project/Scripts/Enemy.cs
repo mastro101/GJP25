@@ -1,49 +1,21 @@
+using System;
 using UnityEngine;
 
-public class Enemy : MonoBehaviour , IDetectable
+public class Enemy : MonoBehaviour, IDetectable, IDamageable
 {
-    [SerializeField] int _health = 2;
-    public int health
+    [SerializeField]
+    public int _health = 1;
+    int IDamageable.Health
     {
         get => _health;
         set
         {
-            if (_health <= 0)
-            {
-                _health = 0;
-                OnHealth0();
-            }
-            else
-            {
-                _health = value;
-            }
+            _health = value > 0 ? value : 0;
+            OnHealthChange_event?.Invoke(value);
         }
     }
-    public System.Action<int> OnDamage_event;
 
-    private void OnEnable()
-    {
-        OnDamage_event += OnDamage;
-    }
-
-    private void OnDisable()
-    {
-        OnDamage_event -= OnDamage;
-    }
-
-    public void Hit(int damage = 1)
-    {
-        health -= damage;
-        OnDamage(damage);
-    }
-
-    public void OnDamage(int damage)
-    {
-        Debug.LogFormat("-{0} {1}", damage, gameObject.name);
-    }
-
-    public void OnHealth0()
-    {
-        Debug.Log("è morto");
-    }
+    public Action<int> OnHealthChange_event { get; set; }
+    public Action<int> OnHit_event { get; set; }
+    public Action OnDeath_event { get; set; }
 }
