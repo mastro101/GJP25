@@ -15,6 +15,7 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField] CinemachineVirtualCamera lockOnCamera;
     //[SerializeField] float cameraSpeed;
     public System.Action onDashStarted;
+    public System.Action onJumpStarted;
 
     Rigidbody rb;
     Camera cam;
@@ -78,6 +79,7 @@ public class PlayerMovement : MonoBehaviour
     {
         if (rb.linearVelocity.y > -deadzoneJump && rb.linearVelocity.y < deadzoneJump)
             rb.linearVelocity += Vector3.up * jumpForce;
+        onJumpStarted?.Invoke();
     }
 
     private void LockAction_performed(InputAction.CallbackContext obj)

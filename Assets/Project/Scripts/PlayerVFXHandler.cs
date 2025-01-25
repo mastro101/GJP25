@@ -12,6 +12,7 @@ public class PlayerVFXHandler : MonoBehaviour
     {
         playerMovement = GetComponent<PlayerMovement>();
         playerMovement.onDashStarted += PlayDashVFX;
+        playerMovement.onJumpStarted += PlayJumpStartedVFX;
     }
 
     void PlayDashVFX()
@@ -20,8 +21,14 @@ public class PlayerVFXHandler : MonoBehaviour
         DashSmoke.Play();
     }
 
+    void PlayJumpStartedVFX()
+    {
+        DashSmoke.Play();
+    }
+
     void OnDisable()
     {
         playerMovement.onDashStarted -= PlayDashVFX;
+        playerMovement.onJumpStarted -= PlayJumpStartedVFX;
     }
 }
