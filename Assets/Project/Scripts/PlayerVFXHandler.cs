@@ -4,7 +4,8 @@ using UnityEngine.InputSystem;
 public class PlayerVFXHandler : MonoBehaviour
 {
     PlayerMovement playerMovement;
-    [SerializeField] ParticleSystem DashVFX;
+    [SerializeField] ParticleSystem DashTrails;
+    [SerializeField] ParticleSystem DashSmoke;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void OnEnable()
@@ -15,7 +16,8 @@ public class PlayerVFXHandler : MonoBehaviour
 
     void PlayDashVFX()
     {
-        DashVFX.Play();
+        DashTrails.Play();
+        DashSmoke.Play();
     }
 
     void OnDisable()
