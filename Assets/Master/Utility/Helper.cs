@@ -5,7 +5,7 @@ namespace Eastermaster.Helper
 {
     public static class Helper
     {
-        public static T[] GetComponentsInNearChild<T>(this MonoBehaviour mb) where T : MonoBehaviour
+        public static T[] GetComponentsInNearChildren<T>(this MonoBehaviour mb) where T : MonoBehaviour
         {
             List<T> res = new List<T>();
             int l = mb.transform.childCount;

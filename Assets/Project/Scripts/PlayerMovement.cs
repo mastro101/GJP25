@@ -14,11 +14,11 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField] CinemachineFreeLook freeCamera;
     [SerializeField] CinemachineVirtualCamera lockOnCamera;
     //[SerializeField] float cameraSpeed;
-    [SerializeField] ViewTrigger viewTriggerForLockOn;
     public System.Action onDashStarted;
 
     Rigidbody rb;
     Camera cam;
+    ViewTrigger viewTriggerForLockOn;
     InputAction moveAction;
     InputAction lookAction;
     InputAction lockAction;
@@ -37,6 +37,7 @@ public class PlayerMovement : MonoBehaviour
     {
         rb = GetComponent<Rigidbody>();
         cam = Camera.main;
+        viewTriggerForLockOn = cam.GetComponent<ViewTrigger>();
         moveAction = InputSystem.actions.FindAction("Player/Move");
         lookAction = InputSystem.actions.FindAction("Player/Look");
         lockAction = InputSystem.actions.FindAction("Player/Lock");
@@ -63,7 +64,7 @@ public class PlayerMovement : MonoBehaviour
 
     private void DashAction_performed(InputAction.CallbackContext obj)
     {
-        if (dashTimer <= 0)
+        if (dashTimer <= 0 && inputDirection != Vector2.zero)
         {
             rb.AddForce(cam.transform.rotation * (new Vector3(inputDirection.x, 0, inputDirection.y) * dashForce), ForceMode.Impulse);
             onDashStarted?.Invoke();

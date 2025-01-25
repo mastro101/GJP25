@@ -19,11 +19,11 @@ public class MoveToTargetNode : TreeNode<IContext>
     public override NodeStatus Evaluate()
     {
         base.Evaluate();
+        if (CheckOnTarget())
+            return NodeStatus.SUCCESS;
         if (moved)
         {
-            if (CheckOnTarget())
-                return NodeStatus.SUCCESS;
-
+            Debug.Log("fallito");
             return NodeStatus.FAILUR;
         }
         return NodeStatus.RUNNING;
@@ -40,5 +40,6 @@ public class MoveToTargetNode : TreeNode<IContext>
         if (CheckOnTarget())
             return;
         ctx.transform.Translate((target.position - ctx.transform.position).normalized * speed * Time.fixedDeltaTime);
+        moved = true;
     }
 }

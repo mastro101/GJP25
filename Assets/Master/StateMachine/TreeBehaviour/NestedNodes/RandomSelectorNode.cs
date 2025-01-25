@@ -1,11 +1,15 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 namespace Eastermaster.TreeBehaviour
 {
-    public class SelectorNode : NestedNode<IContext>
+    public class RandomSelectorNode : NestedNode<IContext>
     {
+        public override void OnEnter()
+        {
+            base.OnEnter();
+            currentNode = childNodes[Random.Range(0, childNodes.Length)];
+        }
+
         public override NodeStatus Evaluate()
         {
             NodeStatus status = currentNode.Evaluate();
@@ -17,18 +21,12 @@ namespace Eastermaster.TreeBehaviour
                     return Exit(true);
                 case NodeStatus.FAILUR:
                     currentNode.Exit(false);
-                    break;
+                    return Exit(false);
                 case NodeStatus.RUNNING:
                     return NodeStatus.RUNNING;
+                default:
+                    return Exit(false);
             }
-
-            if (currentNode == childNode[childNode.Length - 1])
-            {
-                return Exit(false);
-            }
-
-            NextNode();
-            return NodeStatus.RUNNING;
         }
     }
 }

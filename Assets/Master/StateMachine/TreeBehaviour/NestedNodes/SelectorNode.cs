@@ -4,7 +4,7 @@ using UnityEngine;
 
 namespace Eastermaster.TreeBehaviour
 {
-    public class SequenceNode : NestedNode<IContext>
+    public class SelectorNode : NestedNode<IContext>
     {
         public override NodeStatus Evaluate()
         {
@@ -14,17 +14,17 @@ namespace Eastermaster.TreeBehaviour
             {
                 case NodeStatus.SUCCESS:
                     currentNode.Exit(true);
-                    break;
+                    return Exit(true);
                 case NodeStatus.FAILUR:
                     currentNode.Exit(false);
-                    return NodeStatus.FAILUR;
+                    break;
                 case NodeStatus.RUNNING:
                     return NodeStatus.RUNNING;
             }
 
-            if (currentNode == childNode[childNode.Length - 1])
+            if (currentNode == childNodes[childNodes.Length - 1])
             {
-                return Exit(true);
+                return Exit(false);
             }
 
             NextNode();
