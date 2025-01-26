@@ -1,24 +1,36 @@
 using System;
 using UnityEngine;
 
-public class PlayerData : MonoBehaviour, IDamageable
+public class PlayerData : MonoBehaviour, IDamageable, IStaminable
 {
-    [SerializeField] int _health = 1;
-    int IDamageable.Health
+    //----Health----//
+    [SerializeField] int _maxHealth = 10;
+    public int MaxHealth { get => _maxHealth; private set { _maxHealth = value; } }
+    [SerializeField] int _health;
+    public int Health
     {
         get => _health;
         set
         {
+            if (value == _health)
+                return;
+
             _health = value > 0 ? value : 0;
-            OnHealthChange_event?.Invoke(value);
+            OnHealthChange_event?.Invoke(_health);
         }
     }
-    public Action<int> OnHealthChange_event { get; set; }
-    public Action<int> OnHit_event { get; set; }
-    public Action OnDeath_event { get; set; }
 
-    [SerializeField] int _stamina = 10;
-    int Stamina
+    public Action<int> OnHealthChange_event { get; set; }
+    public Action<int> OnDamage_event { get; set; }
+    public Action OnDeath_event { get; set; }
+    //------------//
+
+    //----Stamina----//
+    [SerializeField] int _maxStamina = 10;
+    public int MaxStamina { get => _maxStamina; private set { _maxStamina = value; } }
+    
+    [SerializeField] float _stamina = 10;
+    public float Stamina
     {
         get => _stamina;
         set
@@ -27,30 +39,57 @@ public class PlayerData : MonoBehaviour, IDamageable
             OnStaminaChange_event?.Invoke(value);
         }
     }
-    public Action<int> OnStaminaChange_event;
 
-    public void ConsumeStamina(int value = 1)
+    [SerializeField] float _waitTimeToGenerateStamina = 1f;
+    public float WaitTimeToGenerateStamina { get => _waitTimeToGenerateStamina; set => _waitTimeToGenerateStamina = value; }
+    [SerializeField] float _staminaGenerateSpeed = 1f;
+    public float StaminaGenerateSpeed { get => _staminaGenerateSpeed; set => _staminaGenerateSpeed = value; }
+    public Action<float> OnStaminaChange_event { get; set; }
+    public Action<int> OnStaminaConsume_event { get; set; }
+    public Action OnStaminaGenerate_event { get; set; }
+    public Action OnEmpty_event { get; set; }
+
+    float cooldownGenerationStamina;
+    void ResetTimerStamina(int i)
     {
-        Stamina -= value;
+        cooldownGenerationStamina = WaitTimeToGenerateStamina;
+    }
+    //------------//
+
+    //----Attack----//
+    [SerializeField] public int power = 1;
+    //------------//
+
+    private void OnEnable()
+    {
+        (this as IDamageable).Setup();
+        (this as IStaminable).Setup();
+        OnStaminaConsume_event += ResetTimerStamina;
     }
 
-    [SerializeField] public int power;
-
-    IDamageable myself;
-    private void Awake()
+    private void OnDisable()
     {
-        myself = this;
+        OnStaminaConsume_event -= ResetTimerStamina;
     }
 
     private void Update()
     {
+        if (Stamina < MaxStamina && cooldownGenerationStamina <= 0)
+        {
+            (this as IStaminable).GenerateStamina(Time.deltaTime);
+        }
+        else
+        {
+            cooldownGenerationStamina -= Time.deltaTime;
+        }
+
         if (Input.GetKeyDown(KeyCode.Alpha1))
         {
-            myself.Hit();
+            (this as IDamageable).Damage();
         }
         if (Input.GetKeyDown(KeyCode.Alpha2))
         {
-            ConsumeStamina();
+            (this as IStaminable).Consume();
         }
     }
 }

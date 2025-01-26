@@ -1,21 +1,26 @@
-using UnityEngine;
-
 public interface IDamageable
 {
-    GameObject gameObject { get; }
-
-    protected int Health { get; set; }
+    public int MaxHealth { get; }
+    public int Health { get; set; }
 
     System.Action<int> OnHealthChange_event { get; set; }
-    System.Action<int> OnHit_event { get; set; }
+    System.Action<int> OnDamage_event { get; set; }
     System.Action OnDeath_event { get; set; }
 
-    public void Hit(int damage = 1)
+    public void Damage(int damage = 1)
     {
         Health -= damage;
-        if (Health < 0)
+        if (Health <= 0)
+        {
+            OnDeath_event?.Invoke();
             return;
+        }
 
-        OnHit_event?.Invoke(damage);
+        OnDamage_event?.Invoke(damage);
+    }
+
+    public void Setup()
+    {
+        Health = MaxHealth;
     }
 }

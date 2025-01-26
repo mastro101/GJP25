@@ -6,7 +6,7 @@ namespace Eastermaster.TreeBehaviour
 {
     public class GenericTree : TreeBehaviour<IContext>
     {
-        [SerializeInterface(typeof(IContext))] GameObject ctx;
+        [SerializeField][SerializeInterface(typeof(IContext))] GameObject ctx;
 
         private void Start()
         {
