@@ -45,12 +45,12 @@ public class PlayerData : MonoBehaviour, IDamageable, IStaminable
     [SerializeField] float _staminaGenerateSpeed = 1f;
     public float StaminaGenerateSpeed { get => _staminaGenerateSpeed; set => _staminaGenerateSpeed = value; }
     public Action<float> OnStaminaChange_event { get; set; }
-    public Action<int> OnStaminaConsume_event { get; set; }
+    public Action<float> OnStaminaConsume_event { get; set; }
     public Action OnStaminaGenerate_event { get; set; }
     public Action OnEmpty_event { get; set; }
 
     float cooldownGenerationStamina;
-    void ResetTimerStamina(int i)
+    void ResetTimerStamina(float i)
     {
         cooldownGenerationStamina = WaitTimeToGenerateStamina;
     }

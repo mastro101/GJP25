@@ -7,9 +7,13 @@ using UnityEngine.InputSystem.Users;
 [RequireComponent(typeof(Rigidbody))]
 public class PlayerMovement : MonoBehaviour
 {
+    [SerializeField]
+    [SerializeInterface(typeof(IStaminable))] GameObject playerData;
     [SerializeField] float speed = 10;
     [SerializeField] float jumpForce = 7.5f;
+    [SerializeField] float jumpStaminaCost = 2f;
     [SerializeField] float dashForce = 500;
+    [SerializeField] float dashStaminaCost = 2f;
     [SerializeField] float dashCooldown = 2;
     [SerializeField] CinemachineFreeLook freeCamera;
     [SerializeField] CinemachineVirtualCamera lockOnCamera;
@@ -18,6 +22,7 @@ public class PlayerMovement : MonoBehaviour
     public System.Action onJumpStarted;
 
     Rigidbody rb;
+    IStaminable staminaData;
     Camera cam;
     ViewTrigger viewTriggerForLockOn;
     InputAction moveAction;
@@ -37,6 +42,7 @@ public class PlayerMovement : MonoBehaviour
     private void Awake()
     {
         rb = GetComponent<Rigidbody>();
+        staminaData = playerData.GetComponent<IStaminable>();
         cam = Camera.main;
         viewTriggerForLockOn = cam.GetComponent<ViewTrigger>();
         moveAction = InputSystem.actions.FindAction("Player/Move");
@@ -65,11 +71,12 @@ public class PlayerMovement : MonoBehaviour
 
     private void DashAction_performed(InputAction.CallbackContext obj)
     {
-        if (dashTimer <= 0 && inputDirection != Vector2.zero)
+        if (dashTimer <= 0 && inputDirection != Vector2.zero && staminaData.Stamina > 0)
         {
             rb.AddForce(cam.transform.rotation * (new Vector3(inputDirection.x, 0, inputDirection.y).normalized * dashForce), ForceMode.Impulse);
             onDashStarted?.Invoke();
             dashTimer = dashCooldown;
+            staminaData.Consume(dashStaminaCost);
         }
 
     }
@@ -77,9 +84,12 @@ public class PlayerMovement : MonoBehaviour
     const float deadzoneJump = 0.01f;
     private void JumpAction_performed(InputAction.CallbackContext obj)
     {
-        if (rb.linearVelocity.y > -deadzoneJump && rb.linearVelocity.y < deadzoneJump)
+        if (rb.linearVelocity.y > -deadzoneJump && rb.linearVelocity.y < deadzoneJump && staminaData.Stamina > 0)
+        {
             rb.linearVelocity += Vector3.up * jumpForce;
-        onJumpStarted?.Invoke();
+            onJumpStarted?.Invoke();
+            staminaData.Consume(jumpStaminaCost);
+        }
     }
 
     private void LockAction_performed(InputAction.CallbackContext obj)

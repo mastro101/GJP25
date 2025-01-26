@@ -602,58 +602,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1 &1531397055
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 1531397057}
-  - component: {fileID: 1531397056}
-  m_Layer: 0
-  m_Name: CameraPivot
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!1818360608 &1531397056
-PositionConstraint:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1531397055}
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Weight: 1
-  m_TranslationAtRest: {x: -1.18, y: 0, z: -12.75}
-  m_TranslationOffset: {x: 0, y: 0, z: 0}
-  m_AffectTranslationX: 1
-  m_AffectTranslationY: 1
-  m_AffectTranslationZ: 1
-  m_Active: 1
-  m_IsLocked: 1
-  m_Sources:
-  - sourceTransform: {fileID: 18327984}
-    weight: 1
---- !u!4 &1531397057
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1531397055}
-  serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -1.3711336, y: 0, z: -11.01}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 0}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &2108103074
 GameObject:
   m_ObjectHideFlags: 0
@@ -782,6 +730,10 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5100515687419633273, guid: 1732c7c791a31ab468334c217bf37077, type: 3}
+      propertyPath: playerData
+      value: 
+      objectReference: {fileID: 5285255192254905228}
+    - target: {fileID: 5100515687419633273, guid: 1732c7c791a31ab468334c217bf37077, type: 3}
       propertyPath: viewTriggerForLockOn
       value: 
       objectReference: {fileID: 1008463004}
@@ -800,10 +752,6 @@ PrefabInstance:
     - target: {fileID: 5644131156132563137, guid: 1732c7c791a31ab468334c217bf37077, type: 3}
       propertyPath: m_LocalRotation.z
       value: 0.00000000432789
-      objectReference: {fileID: 0}
-    - target: {fileID: 6106345177861052864, guid: 1732c7c791a31ab468334c217bf37077, type: 3}
-      propertyPath: m_LookAt
-      value: 
       objectReference: {fileID: 0}
     - target: {fileID: 6406640587670407528, guid: 1732c7c791a31ab468334c217bf37077, type: 3}
       propertyPath: m_Name
@@ -830,11 +778,15 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 1732c7c791a31ab468334c217bf37077, type: 3}
+--- !u!1 &5285255192254905228 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 6406640587670407528, guid: 1732c7c791a31ab468334c217bf37077, type: 3}
+  m_PrefabInstance: {fileID: 5285255192254905227}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0
   m_Roots:
-  - {fileID: 1531397057}
   - {fileID: 1008463001}
   - {fileID: 944369577}
   - {fileID: 1488006832}

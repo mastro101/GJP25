@@ -6,11 +6,11 @@ public interface IStaminable
     public float StaminaGenerateSpeed { get; set; }
 
     System.Action<float> OnStaminaChange_event { get; set; }
-    System.Action<int> OnStaminaConsume_event { get; set; }
+    System.Action<float> OnStaminaConsume_event { get; set; }
     System.Action OnStaminaGenerate_event { get; set; }
     System.Action OnEmpty_event { get; set; }
 
-    public void Consume(int value = 1)
+    public void Consume(float value = 1)
     {
         Stamina -= value;
         OnStaminaConsume_event?.Invoke(value);
