@@ -71,7 +71,7 @@ public class PlayerMovement : MonoBehaviour
 
     private void DashAction_performed(InputAction.CallbackContext obj)
     {
-        if (dashTimer <= 0 && inputDirection != Vector2.zero && staminaData.Stamina > 0)
+        if (dashTimer <= 0 && inputDirection != Vector2.zero && staminaData.Stamina > 1)
         {
             rb.AddForce(cam.transform.rotation * (new Vector3(inputDirection.x, 0, inputDirection.y).normalized * dashForce), ForceMode.Impulse);
             onDashStarted?.Invoke();
@@ -84,7 +84,7 @@ public class PlayerMovement : MonoBehaviour
     const float deadzoneJump = 0.01f;
     private void JumpAction_performed(InputAction.CallbackContext obj)
     {
-        if (rb.linearVelocity.y > -deadzoneJump && rb.linearVelocity.y < deadzoneJump && staminaData.Stamina > 0)
+        if (rb.linearVelocity.y > -deadzoneJump && rb.linearVelocity.y < deadzoneJump && staminaData.Stamina > 1)
         {
             rb.linearVelocity += Vector3.up * jumpForce;
             onJumpStarted?.Invoke();
@@ -103,12 +103,16 @@ public class PlayerMovement : MonoBehaviour
         }
         else
         {
-            lockOn = true;
             IDetectable[] detectables = viewTriggerForLockOn.GetDetectedObjects();
             if (detectables.Length > 0)
+            {
+                lockOn = true;
                 lockOnDetectable = viewTriggerForLockOn.GetDetectedObjects()[0];
-            lockOnCamera.gameObject.SetActive(true);
-            freeCamera.gameObject.SetActive(false);
+                lockOnCamera.LookAt = viewTriggerForLockOn.GetDetectedObjects()[0].transform;
+                lockOnCamera.gameObject.SetActive(true);
+                freeCamera.gameObject.SetActive(false);
+            }
+                
         }
 
     }
