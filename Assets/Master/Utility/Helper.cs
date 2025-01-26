@@ -1,3 +1,4 @@
+using JetBrains.Annotations;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -5,7 +6,7 @@ namespace Eastermaster.Helper
 {
     public static class Helper
     {
-        public static T[] GetComponentsInNearChildren<T>(this MonoBehaviour mb) where T : MonoBehaviour
+        public static T[] GetComponentsInNearChildren<T>(this Component mb)
         {
             List<T> res = new List<T>();
             int l = mb.transform.childCount;
@@ -16,6 +17,24 @@ namespace Eastermaster.Helper
                     res.Add(obj);
             }
             return res.ToArray();
+        }
+
+        public static T GetComponentInNearParents<T>(this Component mb)
+        {
+            T res = mb.GetComponent<T>();
+            if (res != null)
+                return res;
+            
+            Transform _parent = mb.transform.parent;
+            while ( _parent != null )
+            {
+                res = _parent.GetComponent<T>();
+                if (res != null)
+                    return res;
+                _parent = _parent.parent;
+            }
+
+            return default(T);
         }
     }
 }

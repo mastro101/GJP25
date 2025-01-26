@@ -119,11 +119,6 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
---- !u!4 &18327984 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 1031785806976448217, guid: 1732c7c791a31ab468334c217bf37077, type: 3}
-  m_PrefabInstance: {fileID: 5285255192254905227}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &944369575
 GameObject:
   m_ObjectHideFlags: 0
@@ -334,7 +329,7 @@ Transform:
   m_GameObject: {fileID: 1008462998}
   serializedVersion: 2
   m_LocalRotation: {x: -0.14521995, y: -0.000000029486404, z: -0.0000000043278923, w: 0.98939943}
-  m_LocalPosition: {x: -1.3711336, y: 0.4, z: -14.01}
+  m_LocalPosition: {x: 0, y: 0.4, z: -13}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -440,10 +435,6 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 1385523756287027520, guid: 7a9b0211026a31948983a729dcc95349, type: 3}
-      propertyPath: managedReferences[6215998305065501087].m_Value
-      value: 
-      objectReference: {fileID: 18327984}
     - target: {fileID: 1920365802190999087, guid: 7a9b0211026a31948983a729dcc95349, type: 3}
       propertyPath: m_Name
       value: Katana
@@ -691,7 +682,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 2421607536047757474, guid: 1732c7c791a31ab468334c217bf37077, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -1.3711336
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2421607536047757474, guid: 1732c7c791a31ab468334c217bf37077, type: 3}
       propertyPath: m_LocalPosition.y
@@ -699,7 +690,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2421607536047757474, guid: 1732c7c791a31ab468334c217bf37077, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -11.01
+      value: -10
       objectReference: {fileID: 0}
     - target: {fileID: 2421607536047757474, guid: 1732c7c791a31ab468334c217bf37077, type: 3}
       propertyPath: m_LocalRotation.w
@@ -733,10 +724,6 @@ PrefabInstance:
       propertyPath: playerData
       value: 
       objectReference: {fileID: 5285255192254905228}
-    - target: {fileID: 5100515687419633273, guid: 1732c7c791a31ab468334c217bf37077, type: 3}
-      propertyPath: viewTriggerForLockOn
-      value: 
-      objectReference: {fileID: 1008463004}
     - target: {fileID: 5644131156132563137, guid: 1732c7c791a31ab468334c217bf37077, type: 3}
       propertyPath: m_LocalRotation.w
       value: 0.98939943
@@ -756,10 +743,6 @@ PrefabInstance:
     - target: {fileID: 6406640587670407528, guid: 1732c7c791a31ab468334c217bf37077, type: 3}
       propertyPath: m_Name
       value: PlayerCharacterBase
-      objectReference: {fileID: 0}
-    - target: {fileID: 8952056892355096682, guid: 1732c7c791a31ab468334c217bf37077, type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 0.9933062
       objectReference: {fileID: 0}
     - target: {fileID: 8952056892355096682, guid: 1732c7c791a31ab468334c217bf37077, type: 3}
       propertyPath: m_LocalRotation.x
