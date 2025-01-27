@@ -734,10 +734,12 @@ GameObject:
   m_Component:
   - component: {fileID: 1031785806976448217}
   - component: {fileID: 5100515687419633273}
+  - component: {fileID: 8080282977889527482}
   - component: {fileID: 8411447936242282277}
   - component: {fileID: 1007999609335689757}
   - component: {fileID: 7121726619687515521}
   - component: {fileID: 6118155942790659600}
+  - component: {fileID: 5569981352423276920}
   m_Layer: 0
   m_Name: Player
   m_TagString: Untagged
@@ -784,6 +786,21 @@ MonoBehaviour:
   dashCooldown: 2
   freeCamera: {fileID: 6656830554239473818}
   lockOnCamera: {fileID: 6106345177861052864}
+--- !u!114 &8080282977889527482
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6112503814458736814}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 845584b06c067aa4087c3e88e29cc39c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  animator: {fileID: 5569981352423276920}
+  playerData: {fileID: 240714399488658499}
+  playerMovement: {fileID: 5100515687419633273}
 --- !u!114 &8411447936242282277
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -954,6 +971,28 @@ MonoBehaviour:
   DashSmoke: {fileID: 8205343584958683979}
   jumpStart: {fileID: 8300000, guid: 6f0624359f32a3243a2e22cbf7c016ad, type: 3}
   dashStart: {fileID: 8300000, guid: bcf3441dd1d3eff41b3e262a9e2f1ef7, type: 3}
+--- !u!95 &5569981352423276920
+Animator:
+  serializedVersion: 7
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6112503814458736814}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 78deab4c730ed1d44b0c1a9e15c74b39, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_AnimatePhysics: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
 --- !u!1 &6353506276488421828
 GameObject:
   m_ObjectHideFlags: 0
@@ -1161,7 +1200,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7634512066861421610}
   serializedVersion: 2
-  m_LocalRotation: {x: 0.14521988, y: 0.000000029486404, z: 0.000000004327891, w: 0.98939943}
+  m_LocalRotation: {x: 0.14521992, y: 0.000000029486404, z: 0.00000000432789, w: 0.98939943}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -1240,7 +1279,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7687744907527530086}
   serializedVersion: 2
-  m_LocalRotation: {x: 0.115511246, y: 0.0000000293435, z: 0.0000000052093916, w: 0.9933062}
+  m_LocalRotation: {x: 0.11551128, y: 0.0000000293435, z: 0.0000000052093907, w: 0.9933062}
   m_LocalPosition: {x: 1.3322676e-15, y: -0.000000028545331, z: -0.000000008564024}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0

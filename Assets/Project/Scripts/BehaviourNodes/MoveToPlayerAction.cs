@@ -77,7 +77,7 @@ public partial class MoveToPlayerAction : Action
         Agent.Value.transform.position = agentPosition;
 
         // Look at the target.
-        Agent.Value.transform.forward = toDestination;
+        Agent.Value.transform.LookAt(m_LastTargetPosition);
         
 
         return Status.Running;

@@ -66,6 +66,7 @@ MonoBehaviour:
   m_Graph: {fileID: -144693960396089745, guid: 199441bd1d207d2429c73c6add75da66, type: 2}
   m_BlackboardVariableOverridesList:
   - rid: 6215998333512843329
+  - rid: 6215998353563714137
   m_IsInitialised: 0
   m_IsStarted: 0
   references:
@@ -79,6 +80,14 @@ MonoBehaviour:
           m_Value1: 0
         Name: Self
         m_Value: {fileID: 1920365802190999087}
+    - rid: 6215998353563714137
+      type: {class: 'BlackboardVariable`1[[UnityEngine.Animator, UnityEngine.AnimationModule]]', ns: Unity.Behavior, asm: Unity.Behavior}
+      data:
+        GUID:
+          m_Value0: 15990989550928390310
+          m_Value1: 16984855330627979546
+        Name: Animator
+        m_Value: {fileID: 7686406708199180150}
 --- !u!1 &4894330452020155143
 GameObject:
   m_ObjectHideFlags: 0

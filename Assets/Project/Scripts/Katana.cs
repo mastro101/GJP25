@@ -17,7 +17,7 @@ public class Katana : Enemy
 
     public Transform GetPlayerTransform() { return player.transform; }
 
-    public void Attack()
+    public bool Attack()
     {
         Collider[] colliders = Physics.OverlapCapsule(hitBoxTop.position, hitBoxBottom.position, hitBoxRadius);
 
@@ -29,7 +29,9 @@ public class Katana : Enemy
             if (damagable is Enemy)
                 continue;
             damagable.Damage();
+            return true;
         }
+        return false;
     }
 
     private void Update()

@@ -144,8 +144,8 @@ public class PlayerMovement : MonoBehaviour
             return;
 
         lockOn = false;
-        freeCamera.gameObject.SetActive(true);
-        lockOnCamera.gameObject.SetActive(false);
+        if (freeCamera) freeCamera.gameObject.SetActive(true);
+        if (lockOnCamera) lockOnCamera.gameObject.SetActive(false);
         currentDetectable.OnDetectableChange -= LockOnToggle;
         currentDetectable = null;
     }
@@ -202,10 +202,5 @@ public class PlayerMovement : MonoBehaviour
         //    lookDirection = lookAction.ReadValue<Vector2>();
         //    //cameraPivot.Rotate(new Vector3(0, lookDirection.x, 0) * (mouse ? cameraSpeedMouse : cameraSpeed) * Time.deltaTime, Space.Self);
         //}
-    }
-
-    private void FixedUpdate()
-    {
-        Move();
     }
 }
