@@ -131,7 +131,7 @@ public class PlayerMovement : MonoBehaviour
         {
             lockOn = true;
             currentDetectable = viewTriggerForLockOn.GetDetectedObjects()[0];
-            lockOnCamera.LookAt = viewTriggerForLockOn.GetDetectedObjects()[0].transform;
+            lockOnCamera.LookAt = this.transform;
             lockOnCamera.gameObject.SetActive(true);
             freeCamera.gameObject.SetActive(false);
             currentDetectable.OnDetectableChange += LockOnToggle;

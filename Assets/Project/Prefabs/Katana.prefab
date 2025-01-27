@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 4080970918108857749}
   - component: {fileID: 3929406792959813664}
   - component: {fileID: 4544207853600925601}
+  - component: {fileID: 4938757465170820959}
   m_Layer: 0
   m_Name: Katana
   m_TagString: Untagged
@@ -88,6 +89,29 @@ MonoBehaviour:
           m_Value1: 16984855330627979546
         Name: Animator
         m_Value: {fileID: 7686406708199180150}
+--- !u!136 &4938757465170820959
+CapsuleCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1920365802190999087}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Radius: 0.54
+  m_Height: 1
+  m_Direction: 1
+  m_Center: {x: 0, y: 0.58, z: 0}
 --- !u!1 &4894330452020155143
 GameObject:
   m_ObjectHideFlags: 0
