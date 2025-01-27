@@ -4,7 +4,7 @@ using UnityEngine;
 
 namespace Eastermaster.StateMachineAnimator
 {
-    public abstract class StateAnimator<T> : StateMachineBehaviour where T : IContext
+    public abstract class StateAnimator<T> : StateMachineBehaviour where T : BaseStateMachineContext
     {
         protected T ctx;
 

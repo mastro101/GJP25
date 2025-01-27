@@ -34,7 +34,7 @@ public class PlayerMovement : MonoBehaviour
     Vector2 inputDirection;
     Vector2 lookDirection;
     bool lockOn;
-    IDetectable lockOnDetectable;
+    IDetectable currentDetectable;
 
     //float cameraSpeedMouse => cameraSpeed / 2;
     Vector3 center => transform.position;
@@ -94,27 +94,60 @@ public class PlayerMovement : MonoBehaviour
 
     private void LockAction_performed(InputAction.CallbackContext obj)
     {
-        if (lockOn == true)
+        LockOnToggle();
+    }
+
+    void LockOnToggle()
+    {
+        if (lockOn)
         {
-            lockOn = false;
-            lockOnDetectable = null;
-            freeCamera.gameObject.SetActive(true);
-            lockOnCamera.gameObject.SetActive(false);
+            StopLockOn();
         }
         else
         {
-            IDetectable[] detectables = viewTriggerForLockOn.GetDetectedObjects();
-            if (detectables.Length > 0)
-            {
-                lockOn = true;
-                lockOnDetectable = viewTriggerForLockOn.GetDetectedObjects()[0];
-                lockOnCamera.LookAt = viewTriggerForLockOn.GetDetectedObjects()[0].transform;
-                lockOnCamera.gameObject.SetActive(true);
-                freeCamera.gameObject.SetActive(false);
-            }
-                
+            LockOnDetectable();
         }
+    }
 
+    void LockOnToggle(bool b)
+    {
+        if (b)
+        {
+            LockOnDetectable();
+        }
+        else
+        {
+            StopLockOn();
+        }
+    }
+
+    void LockOnDetectable()
+    {
+        if (lockOn)
+            return;
+
+        IDetectable[] detectables = viewTriggerForLockOn.GetDetectedObjects();
+        if (detectables.Length > 0)
+        {
+            lockOn = true;
+            currentDetectable = viewTriggerForLockOn.GetDetectedObjects()[0];
+            lockOnCamera.LookAt = viewTriggerForLockOn.GetDetectedObjects()[0].transform;
+            lockOnCamera.gameObject.SetActive(true);
+            freeCamera.gameObject.SetActive(false);
+            currentDetectable.OnDetectableChange += LockOnToggle;
+        }
+    }
+
+    void StopLockOn()
+    {
+        if (!lockOn)
+            return;
+
+        lockOn = false;
+        freeCamera.gameObject.SetActive(true);
+        lockOnCamera.gameObject.SetActive(false);
+        currentDetectable.OnDetectableChange -= LockOnToggle;
+        currentDetectable = null;
     }
 
     //bool mouse = true;
@@ -137,6 +170,22 @@ public class PlayerMovement : MonoBehaviour
         //}
     }
 
+    public void Move()
+    {
+        Vector3 translation = cam.transform.rotation * (new Vector3(inputDirection.x, 0, inputDirection.y) * speed * Time.fixedDeltaTime);
+        translation = new Vector3(translation.x, 0, translation.z);
+        if (lockOn && currentDetectable != null)
+        {
+            transform.LookAt(new Vector3(currentDetectable.transform.position.x, 0, currentDetectable.transform.position.z));
+        }
+        else
+        {
+            transform.LookAt(Vector3.Lerp(center + transform.forward, center + translation, .75f));
+        }
+        //transform.Translate(translation, Space.World);
+        rb.MovePosition(center + translation);
+    }
+
     private void Update()
     {
         inputDirection = moveAction.ReadValue<Vector2>();
@@ -152,25 +201,11 @@ public class PlayerMovement : MonoBehaviour
         //{
         //    lookDirection = lookAction.ReadValue<Vector2>();
         //    //cameraPivot.Rotate(new Vector3(0, lookDirection.x, 0) * (mouse ? cameraSpeedMouse : cameraSpeed) * Time.deltaTime, Space.Self);
-
         //}
-
     }
-
 
     private void FixedUpdate()
     {
-        Vector3 translation = cam.transform.rotation * (new Vector3(inputDirection.x, 0, inputDirection.y) * speed * Time.fixedDeltaTime);
-        translation = new Vector3(translation.x, 0, translation.z);
-        if (lockOn && lockOnDetectable != null)
-        {
-            transform.LookAt(new Vector3(lockOnDetectable.transform.position.x, 0, lockOnDetectable.transform.position.z));
-        }
-        else
-        {
-            transform.LookAt(Vector3.Lerp(center + transform.forward, center + translation, .75f));
-        }
-        //transform.Translate(translation, Space.World);
-        rb.MovePosition(center + translation);
+        Move();
     }
 }

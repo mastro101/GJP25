@@ -1,3 +1,4 @@
+using Eastermaster.Helper;
 using NUnit.Framework;
 using System.Collections.Generic;
 using UnityEngine;
@@ -20,7 +21,7 @@ namespace Eastermaster
             Collider[] hitColliders = Physics.OverlapSphere(transform.position, radius);
             foreach (var hitCollider in hitColliders)
             {
-                IDetectable detectable = hitCollider.GetComponent<IDetectable>();
+                IDetectable detectable = hitCollider.GetComponentInNearParents<IDetectable>();
 
                 if (detectable == null) continue;
 

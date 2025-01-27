@@ -4,7 +4,7 @@ using UnityEngine;
 
 namespace Eastermaster.StateMachineAnimator
 {
-    public abstract class StateMachineAnimator<T> : MonoBehaviour where T : IContext
+    public abstract class StateMachineAnimator<T> : MonoBehaviour where T : BaseStateMachineContext
     {
         [SerializeField] protected Animator animator;
 

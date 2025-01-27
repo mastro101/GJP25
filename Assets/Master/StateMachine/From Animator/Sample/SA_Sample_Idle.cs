@@ -10,8 +10,8 @@ namespace Eastermaster
         public override void OnEnter()
         {
             base.OnEnter();
-            Debug.LogFormat("idle with ctx {0} and {1}", ctx.camera, ctx.go);
-            ctx.Next?.Invoke();
+            Debug.LogFormat("idle with ctx {0} and {1}", ctx.camera, ctx.self);
+            ctx.Next();
         }
 
         public override void OnExit()

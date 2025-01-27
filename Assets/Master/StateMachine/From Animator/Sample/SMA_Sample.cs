@@ -11,27 +11,19 @@ namespace Eastermaster.StateMachineAnimator
 
         protected override void InitCtx()
         {
-            ctx = new SampleCTX()
+            ctx = new SampleCTX(gameObject, animator)
             {
                 camera = _camera,
-                go = gameObject,
-                Next = _Next,
             };
-
-            void _Next()
-            {
-                animator.SetTrigger("Next");
-            }
         }
     }
 
-    public class SampleCTX : IContext
+    public class SampleCTX : BaseStateMachineContext
     {
         public Camera camera;
-        public GameObject go;
 
-        public Action Next;
-
-        public Transform transform => go.transform;
+        public SampleCTX(GameObject self, Animator animator) : base(self, animator)
+        {
+        }
     }
 }

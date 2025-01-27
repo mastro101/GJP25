@@ -9,8 +9,9 @@ public class Katana : Enemy
 
     PlayerMovement player;
 
-    private void Awake()
+    override protected void Awake()
     {
+        base.Awake();
         player = FindFirstObjectByType<PlayerMovement>();
     }
 
@@ -28,6 +29,14 @@ public class Katana : Enemy
             if (damagable is Enemy)
                 continue;
             damagable.Damage();
+        }
+    }
+
+    private void Update()
+    {
+        if (Input.GetKeyDown(KeyCode.RightControl))
+        {
+            (this as IDamageable).Damage(MaxHealth);
         }
     }
 
