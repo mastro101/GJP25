@@ -3,7 +3,6 @@ using Unity.Behavior;
 using UnityEngine;
 using Action = Unity.Behavior.Action;
 using Unity.Properties;
-using static UnityEditor.Experimental.GraphView.GraphView;
 
 [Serializable, GeneratePropertyBag]
 [NodeDescription(name: "Attack", story: "[katana] [animator] Attack with [triggerToSet]", category: "Action", id: "1fe0fc718ab0d8fbcf40acf01090dd39")]
