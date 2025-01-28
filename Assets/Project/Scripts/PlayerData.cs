@@ -85,7 +85,7 @@ public class PlayerData : MonoBehaviour, IDamageable, IStaminable
 
         if (Input.GetKeyDown(KeyCode.Alpha1))
         {
-            (this as IDamageable).Damage();
+            (this as IDamageable).Damage(-1);
         }
         if (Input.GetKeyDown(KeyCode.Alpha2))
         {

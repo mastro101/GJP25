@@ -12,17 +12,30 @@ public partial class AttackAction : Action
     [SerializeReference] public BlackboardVariable<Katana> katana; //type IAttacker in the future
     [SerializeReference] public BlackboardVariable<Animator> animator;
     [SerializeReference] public BlackboardVariable<string> triggerToSet;
+    [SerializeReference] public BlackboardVariable<AnimationClip> clip;
     //[SerializeReference] public BlackboardVariable<float> time;
 
     float timer;
-    AnimatorStateInfo info;
     bool hitSomething;
-    bool didOnce = false;
     protected override Status OnStart()
     {
-        if (katana == null || animator.Value == null)
+        if (katana == null)
+        {
+            Debug.LogException(new Exception("Katana on Node Attack is missing"), katana);
             return Status.Failure;
-        didOnce = false;
+        }
+        if (animator == null)
+        {
+            Debug.LogException(new Exception("Animator on Node Attack is missing"), animator);
+            return Status.Failure;
+        }
+        if (clip == null)
+        {
+            Debug.LogException(new Exception("clip on Node Attack is missing"), clip);
+            return Status.Failure;
+        }
+            
+        timer = clip.Value.length;
         foreach (var i in animator.Value.parameters)
         {
             if (i.name == triggerToSet)
@@ -37,11 +50,6 @@ public partial class AttackAction : Action
 
     protected override Status OnUpdate()
     {
-        if (didOnce == false)
-        {
-            timer = animator.Value.GetCurrentAnimatorStateInfo(0).length;
-            didOnce = true;
-        }
         bool hit = katana.Value.Attack();
         if (hitSomething == false)
             hitSomething = hit;
