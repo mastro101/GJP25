@@ -52,6 +52,7 @@ MonoBehaviour:
   hitBoxTop: {fileID: 5352174190469565476}
   hitBoxBottom: {fileID: 1819559672415924737}
   hitBoxRadius: 0.2
+  temp: 0
 --- !u!114 &4544207853600925601
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -271,6 +272,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 93f9e9050202fa24d9c80f62524476ef, type: 3}
       insertIndex: -1
       addedObject: {fileID: 3048882024624359250}
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 93f9e9050202fa24d9c80f62524476ef, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1440129690503044583}
   m_SourcePrefab: {fileID: 100100000, guid: 93f9e9050202fa24d9c80f62524476ef, type: 3}
 --- !u!4 &3572580988970905478 stripped
 Transform:
@@ -451,3 +455,15 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!114 &1440129690503044583
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4242263132499408188}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dbd1fd61f79144a46bcb8034cdb14508, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

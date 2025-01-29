@@ -6,12 +6,17 @@ public class Katana : Enemy
     [SerializeField] Transform hitBoxTop;
     [SerializeField] Transform hitBoxBottom;
     [SerializeField] float hitBoxRadius = 1;
+    [SerializeField] float temp;
 
     PlayerMovement player;
+    bool canAttack;
+    bool canSlowLookingAtPlayer;
 
     override protected void Awake()
     {
         base.Awake();
+        canAttack = false;
+        canSlowLookingAtPlayer = true;
         player = FindFirstObjectByType<PlayerMovement>();
     }
 
@@ -19,6 +24,9 @@ public class Katana : Enemy
 
     public bool Attack()
     {
+        if (!canAttack)
+            return false;
+
         Collider[] colliders = Physics.OverlapCapsule(hitBoxTop.position, hitBoxBottom.position, hitBoxRadius);
 
         foreach (Collider collider in colliders)
@@ -32,6 +40,35 @@ public class Katana : Enemy
             return true;
         }
         return false;
+    }
+
+    public void SlowLookAtPlayer(float speed, float delta)
+    {
+        if (!canSlowLookingAtPlayer)
+            return;
+
+        var rotation = Quaternion.LookRotation(player.transform.position - transform.position);
+        transform.rotation = Quaternion.Slerp(transform.rotation, rotation, delta * speed);
+    }
+
+    public void ToggleSlowLookAtPlayer()
+    {
+        canSlowLookingAtPlayer = !canSlowLookingAtPlayer;
+    }
+
+    public void ToggleAttackCollide()
+    {
+        canAttack = !canAttack;
+    }
+
+    public void SetAttackCollide(bool b)
+    {
+        canAttack = b;
+    }
+
+    public void SetSlowLookAtPlayer(bool b)
+    {
+        canSlowLookingAtPlayer = b;
     }
 
     private void Update()

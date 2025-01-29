@@ -12,6 +12,7 @@ public partial class AttackAction : Action
     [SerializeReference] public BlackboardVariable<Animator> animator;
     [SerializeReference] public BlackboardVariable<string> triggerToSet;
     [SerializeReference] public BlackboardVariable<AnimationClip> clip;
+    [SerializeReference] public BlackboardVariable<float> lookFollowSpeed = new BlackboardVariable<float>(2f);
     //[SerializeReference] public BlackboardVariable<float> time;
 
     float timer;
@@ -33,7 +34,8 @@ public partial class AttackAction : Action
             Debug.LogException(new Exception("clip on Node Attack is missing"), clip);
             return Status.Failure;
         }
-            
+        katana.Value.SetAttackCollide(false);
+        katana.Value.SetSlowLookAtPlayer(false);
         timer = clip.Value.length;
         foreach (var i in animator.Value.parameters)
         {
@@ -50,6 +52,7 @@ public partial class AttackAction : Action
     protected override Status OnUpdate()
     {
         bool hit = katana.Value.Attack();
+        katana.Value.SlowLookAtPlayer(lookFollowSpeed, Time.deltaTime);
         if (hitSomething == false)
             hitSomething = hit;
         timer -= Time.deltaTime;
@@ -61,5 +64,12 @@ public partial class AttackAction : Action
                 return Status.Failure;
         }
         return Status.Running;
+    }
+
+    protected override void OnEnd()
+    {
+        base.OnEnd();
+        katana.Value.SetAttackCollide(false);
+        katana.Value.SetSlowLookAtPlayer(false);
     }
 }
