@@ -23,22 +23,26 @@ namespace Eastermaster.StateMachineAnimator
 
         public void SetTrigger(string triggerName)
         {
-            animator.SetTrigger(triggerName);
+            if (animator)
+                animator.SetTrigger(triggerName);
         }
-        
+
         public void SetBool(string triggerName, bool b)
         {
-            animator.SetBool(triggerName, b);
+            if (animator)
+                animator.SetBool(triggerName, b);
         }
 
         public void SetFloat(string floatName, float f)
         {
-            animator.SetFloat(floatName, f);
+            if (animator)
+                animator.SetFloat(floatName, f);
         }
 
         public void SetInt(string intName, int i)
         {
-            animator.SetInteger(intName, i);
+            if (animator)
+                animator.SetInteger(intName, i);
         }
     }
 }

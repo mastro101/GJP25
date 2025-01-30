@@ -282,23 +282,23 @@ public class PlayerMovement : MonoBehaviour
         canMove = b;
     }
 
+    Vector3 translation = Vector3.forward;
     void MoveHandler(float delta)
     {
         if (!canMove)
+        {
+            stateMachine.SetBool("Move", false);
             return;
+        }
         if (!onFloor)
+        {
+            stateMachine.SetBool("Move", false);
             return;
+        }
 
-        Vector3 translation = inputDirectionFromCameraView * speed * delta;
+        stateMachine.SetBool("Move", true);
+        translation = inputDirectionFromCameraView * speed * delta;
         translation = new Vector3(translation.x, 0, translation.z);
-        if (lockOn && currentDetectable != null)
-        {
-            transform.LookAt(new Vector3(currentDetectable.transform.position.x, 0, currentDetectable.transform.position.z));
-        }
-        else
-        {
-            transform.LookAt(Vector3.Lerp(center + transform.forward, center + translation, .75f));
-        }
         //transform.Translate(translation, Space.World);
         rb.MovePosition(center + translation);
     }
@@ -369,8 +369,15 @@ public class PlayerMovement : MonoBehaviour
 
     private void FixedUpdate()
     {
+        if (lockOn && currentDetectable != null)
+        {
+            transform.LookAt(new Vector3(currentDetectable.transform.position.x, 0, currentDetectable.transform.position.z));
+        }
+        else
+        {
+            transform.LookAt(Vector3.Lerp(center + transform.forward, center + translation, .75f));
+        }
         CheckFloor();
-        stateMachine.SetFloat("Velocity", rb.angularVelocity.magnitude);
         stateMachine.SetFloat("XMovement", inputDirection.x);
         MoveHandler(Time.fixedDeltaTime);
         DashHandler(Time.fixedDeltaTime);
