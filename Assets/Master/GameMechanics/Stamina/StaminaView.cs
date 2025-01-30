@@ -26,6 +26,8 @@ public class StaminaView : MonoBehaviour
             image.fillAmount = 0;
             return;
         }
+
+        float currentFill = image.fillAmount;
         image.fillAmount = stamina / (float)staminable.MaxStamina;
     }
 }
