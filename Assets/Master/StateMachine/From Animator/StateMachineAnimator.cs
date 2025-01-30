@@ -1,3 +1,4 @@
+using System.Security.Cryptography.X509Certificates;
 using UnityEngine;
 
 namespace Eastermaster.StateMachineAnimator
@@ -28,6 +29,16 @@ namespace Eastermaster.StateMachineAnimator
         public void SetBool(string triggerName, bool b)
         {
             animator.SetBool(triggerName, b);
+        }
+
+        public void SetFloat(string floatName, float f)
+        {
+            animator.SetFloat(floatName, f);
+        }
+
+        public void SetInt(string intName, int i)
+        {
+            animator.SetInteger(intName, i);
         }
     }
 }

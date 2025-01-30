@@ -16,7 +16,6 @@ public class PlayerAttackState : StateAnimator<PlayerContext>
         {
             ctx.Next();
         }
-        Debug.Log(ctx.playerMovement.GetAttackDurationTimer());
     }
 
     public override void OnExit()

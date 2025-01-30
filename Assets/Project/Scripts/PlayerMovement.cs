@@ -43,7 +43,16 @@ public class PlayerMovement : MonoBehaviour
     Camera cam;
     ViewTrigger viewTriggerForLockOn;
     IDetectable currentDetectable;
-    bool lockOn;
+    bool _lockOn;
+    bool lockOn
+    {
+        get => _lockOn;
+        set
+        {
+            _lockOn = value;
+            stateMachine.SetBool("LockOn", _lockOn);
+        }
+    }
     //
 
     //input event
@@ -158,7 +167,7 @@ public class PlayerMovement : MonoBehaviour
     {
         return dashDurationTimer;
     }
-    
+
     public float GetAttackDurationTimer()
     {
         return attackDurationTimer;
@@ -305,7 +314,7 @@ public class PlayerMovement : MonoBehaviour
 
             onFloor = true;
             return;
-            
+
         }
         onFloor = false;
     }
@@ -361,6 +370,8 @@ public class PlayerMovement : MonoBehaviour
     private void FixedUpdate()
     {
         CheckFloor();
+        stateMachine.SetFloat("Velocity", rb.angularVelocity.magnitude);
+        stateMachine.SetFloat("XMovement", inputDirection.x);
         MoveHandler(Time.fixedDeltaTime);
         DashHandler(Time.fixedDeltaTime);
         AttackHandler(Time.fixedDeltaTime);

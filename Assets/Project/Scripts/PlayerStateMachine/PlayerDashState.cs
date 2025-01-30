@@ -17,7 +17,6 @@ public class PlayerDashState : StateAnimator<PlayerContext>
         {
             ctx.Next();
         }
-        Debug.Log(ctx.playerMovement.GetDashDurationTimer());
     }
 
     public override void OnExit()
