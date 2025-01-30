@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 namespace Eastermaster.StateMachineAnimator
@@ -21,5 +19,15 @@ namespace Eastermaster.StateMachineAnimator
         }
 
         protected abstract void InitCtx();
+
+        public void SetTrigger(string triggerName)
+        {
+            animator.SetTrigger(triggerName);
+        }
+        
+        public void SetBool(string triggerName, bool b)
+        {
+            animator.SetBool(triggerName, b);
+        }
     }
 }
