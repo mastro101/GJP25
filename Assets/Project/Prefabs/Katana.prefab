@@ -29,8 +29,8 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
+  m_LocalScale: {x: 2, y: 2, z: 2}
+  m_ConstrainProportionsScale: 1
   m_Children:
   - {fileID: 3572580988970905478}
   m_Father: {fileID: 0}
@@ -51,7 +51,7 @@ MonoBehaviour:
   _health: 2
   hitBoxTop: {fileID: 5352174190469565476}
   hitBoxBottom: {fileID: 1819559672415924737}
-  hitBoxRadius: 0.2
+  hitBoxRadius: 0.15
   temp: 0
 --- !u!114 &4544207853600925601
 MonoBehaviour:
@@ -138,7 +138,7 @@ Transform:
   m_GameObject: {fileID: 4894330452020155143}
   serializedVersion: 2
   m_LocalRotation: {x: -0.7071068, y: -0, z: -0, w: 0.7071068}
-  m_LocalPosition: {x: 0, y: -0.02, z: -0.12}
+  m_LocalPosition: {x: 0, y: -0.07, z: -0.12}
   m_LocalScale: {x: 1.4285715, y: 6.3428564, z: 1.4285712}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -305,10 +305,10 @@ CapsuleCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Radius: 0.24
-  m_Height: 6.72
+  m_Radius: 0.16044472
+  m_Height: 5.011154
   m_Direction: 2
-  m_Center: {x: 0, y: 0, z: -1.651249}
+  m_Center: {x: 0, y: 0.07955553, z: -2.5056732}
 --- !u!95 &7686406708199180150
 Animator:
   serializedVersion: 7

@@ -63,7 +63,7 @@ ParticleSystem:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 438182645108607312}
   serializedVersion: 8
-  lengthInSec: 30
+  lengthInSec: 60
   simulationSpeed: 1
   stopAction: 0
   cullingMode: 0
@@ -138,8 +138,8 @@ ParticleSystem:
     startLifetime:
       serializedVersion: 2
       minMaxState: 3
-      scalar: 5.3
-      minScalar: 4.5
+      scalar: 60
+      minScalar: 45
       maxCurve:
         serializedVersion: 2
         m_Curve:
@@ -191,7 +191,7 @@ ParticleSystem:
     startSpeed:
       serializedVersion: 2
       minMaxState: 0
-      scalar: 1
+      scalar: 0.1
       minScalar: 5
       maxCurve:
         serializedVersion: 2
@@ -308,9 +308,9 @@ ParticleSystem:
         m_NumAlphaKeys: 2
     startSize:
       serializedVersion: 2
-      minMaxState: 0
+      minMaxState: 3
       scalar: 1
-      minScalar: 1
+      minScalar: 0.7
       maxCurve:
         serializedVersion: 2
         m_Curve:
@@ -361,7 +361,7 @@ ParticleSystem:
         m_RotationOrder: 4
     startSizeY:
       serializedVersion: 2
-      minMaxState: 0
+      minMaxState: 3
       scalar: 1
       minScalar: 1
       maxCurve:
@@ -414,7 +414,7 @@ ParticleSystem:
         m_RotationOrder: 4
     startSizeZ:
       serializedVersion: 2
-      minMaxState: 0
+      minMaxState: 3
       scalar: 1
       minScalar: 1
       maxCurve:
@@ -692,8 +692,8 @@ ParticleSystem:
     boxThickness: {x: 0, y: 0, z: 0}
     radiusThickness: 1
     donutRadius: 0.2
-    m_Position: {x: 0, y: 0, z: 0}
-    m_Rotation: {x: -90, y: 0, z: 0}
+    m_Position: {x: 0, y: 4, z: 0}
+    m_Rotation: {x: 90, y: 0, z: 0}
     m_Scale: {x: 2.5, y: 1, z: 1}
     placementMode: 0
     m_MeshMaterialIndex: 0
@@ -892,7 +892,7 @@ ParticleSystem:
     rateOverTime:
       serializedVersion: 2
       minMaxState: 0
-      scalar: 80
+      scalar: 13
       minScalar: 10
       maxCurve:
         serializedVersion: 2
@@ -2707,11 +2707,11 @@ ParticleSystem:
         m_PostInfinity: 2
         m_RotationOrder: 4
   NoiseModule:
-    enabled: 0
+    enabled: 1
     strength:
       serializedVersion: 2
       minMaxState: 0
-      scalar: 1
+      scalar: 0.01
       minScalar: 1
       maxCurve:
         serializedVersion: 2
@@ -4879,7 +4879,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3913907361536234032}
   serializedVersion: 2
-  m_LocalRotation: {x: -0, y: -0.058794573, z: -0, w: 0.9982701}
+  m_LocalRotation: {x: 0, y: -0.05879233, z: 0, w: 0.9982703}
   m_LocalPosition: {x: 0.01, y: 3.39, z: 36.43}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -4887,7 +4887,7 @@ Transform:
   - {fileID: 1554879608335785479}
   - {fileID: 920030451751979272}
   m_Father: {fileID: 0}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: -6.741, z: 0}
 --- !u!1 &6700852387181124291
 GameObject:
   m_ObjectHideFlags: 0

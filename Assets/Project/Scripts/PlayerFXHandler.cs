@@ -39,4 +39,9 @@ public class PlayerFXHandler : MonoBehaviour
         playerMovement.onDashStarted -= PlayDashFX;
         playerMovement.onJumpStarted -= PlayJumpStartedFX;
     }
+
+    public void PlayPlayerStepSound()
+    {
+
+    }
 }
