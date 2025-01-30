@@ -300,7 +300,7 @@ public class PlayerMovement : MonoBehaviour
 
         foreach (Collider collider in colliders)
         {
-            if (collider == this)
+            if (collider.GetComponentInNearParents<PlayerMovement>() == this)
                 continue;
 
             onFloor = true;
