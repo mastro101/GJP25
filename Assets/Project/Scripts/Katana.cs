@@ -38,7 +38,7 @@ public class Katana : Enemy
 
     public Transform GetPlayerTransform() { return player.transform; }
 
-    public bool Attack()
+    public bool Attack(int damage)
     {
         if (!canAttack)
             return false;
@@ -52,7 +52,7 @@ public class Katana : Enemy
                 continue;
             if (damagable is Enemy)
                 continue;
-            damagable.Damage();
+            damagable.Damage(damage);
             return true;
         }
         return false;

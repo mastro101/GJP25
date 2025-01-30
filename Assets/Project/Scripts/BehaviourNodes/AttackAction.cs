@@ -13,6 +13,7 @@ public partial class AttackAction : Action
     [SerializeReference] public BlackboardVariable<string> triggerToSet;
     [SerializeReference] public BlackboardVariable<AnimationClip> clip;
     [SerializeReference] public BlackboardVariable<float> lookFollowSpeed = new BlackboardVariable<float>(2f);
+    [SerializeReference] public BlackboardVariable<int> damage = new BlackboardVariable<int>(1);
     //[SerializeReference] public BlackboardVariable<float> time;
 
     float timer;
@@ -51,7 +52,7 @@ public partial class AttackAction : Action
 
     protected override Status OnUpdate()
     {
-        bool hit = katana.Value.Attack();
+        bool hit = katana.Value.Attack(damage);
         katana.Value.SlowLookAtPlayer(lookFollowSpeed, Time.deltaTime);
         if (hitSomething == false)
             hitSomething = hit;

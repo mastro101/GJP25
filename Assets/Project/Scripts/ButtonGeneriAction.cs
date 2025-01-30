@@ -1,0 +1,15 @@
+using UnityEngine;
+using UnityEngine.SceneManagement;
+
+public class ButtonGeneriAction : MonoBehaviour
+{
+    public void ChangeScene(int index)
+    {
+        SceneManager.LoadScene(index);
+    }
+
+    public void ChangeScene(string name)
+    {
+        SceneManager.LoadScene(name);
+    }
+}
