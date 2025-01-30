@@ -7,6 +7,7 @@ public class Katana : Enemy
     [SerializeField] Transform hitBoxBottom;
     [SerializeField] float hitBoxRadius = 1;
 
+    Animator animator;
     PlayerMovement player;
     bool canAttack;
     bool canSlowLookingAtPlayer;
@@ -17,6 +18,22 @@ public class Katana : Enemy
         canAttack = false;
         canSlowLookingAtPlayer = true;
         player = FindFirstObjectByType<PlayerMovement>();
+        animator = this.GetComponentInNearChildren<Animator>();
+    }
+
+    private void OnEnable()
+    {
+        OnDamage_event += SetGotHit;
+    }
+
+    override protected void OnDisable()
+    {
+        OnDamage_event -= SetGotHit;
+    }
+
+    void SetGotHit(int dontuse)
+    {
+        animator.SetTrigger("GotHit");
     }
 
     public Transform GetPlayerTransform() { return player.transform; }

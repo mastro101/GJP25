@@ -130,7 +130,7 @@ public class PlayerMovement : MonoBehaviour
 
     void SetGotHit(int dontuse)
     {
-        stateMachine.SetTrigger("GoHit");
+        stateMachine.SetTrigger("GotHit");
     }
 
     Vector3 dashDirection = Vector3.zero;

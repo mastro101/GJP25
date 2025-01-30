@@ -19,6 +19,18 @@ namespace Eastermaster.Helper
             return res.ToArray();
         }
 
+        public static T GetComponentInNearChildren<T>(this Component mb)
+        {
+            int l = mb.transform.childCount;
+            for (int i = 0; i < l; i++)
+            {
+                T obj = mb.transform.GetChild(i).GetComponent<T>();
+                if (obj != null)
+                    return obj;
+            }
+            return default;
+        }
+
         public static T GetComponentInNearParents<T>(this Component mb)
         {
             T res = mb.GetComponent<T>();
@@ -34,7 +46,7 @@ namespace Eastermaster.Helper
                 _parent = _parent.parent;
             }
 
-            return default(T);
+            return default;
         }
     }
 }
