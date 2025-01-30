@@ -104,6 +104,7 @@ public class PlayerMovement : MonoBehaviour
         dashAction.performed += DashAction_performed;
         attackAction = InputSystem.actions.FindAction("Player/Attack");
         attackAction.performed += AttackAction_performed;
+        damageData.OnDamage_event += SetGotHit;
 
         dashCooldownTimer = 0;
         dashDurationTimer = 0;
@@ -124,6 +125,12 @@ public class PlayerMovement : MonoBehaviour
         jumpAction.performed -= JumpAction_performed;
         dashAction.performed -= DashAction_performed;
         attackAction.performed -= AttackAction_performed;
+        damageData.OnDamage_event -= SetGotHit;
+    }
+
+    void SetGotHit(int dontuse)
+    {
+        stateMachine.SetTrigger("GoHit");
     }
 
     Vector3 dashDirection = Vector3.zero;
@@ -300,7 +307,14 @@ public class PlayerMovement : MonoBehaviour
         translation = new Vector3(translation.x, 0, translation.z);
         
         if (translation != Vector3.zero)
+        {
             stateMachine.SetBool("Move", true);
+        }
+        else
+        {
+            stateMachine.SetBool("Move", false);
+        }
+
         //transform.Translate(translation, Space.World);
         rb.MovePosition(center + translation);
     }
