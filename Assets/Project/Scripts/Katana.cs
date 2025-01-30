@@ -6,7 +6,6 @@ public class Katana : Enemy
     [SerializeField] Transform hitBoxTop;
     [SerializeField] Transform hitBoxBottom;
     [SerializeField] float hitBoxRadius = 1;
-    [SerializeField] float temp;
 
     PlayerMovement player;
     bool canAttack;

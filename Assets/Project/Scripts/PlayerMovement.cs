@@ -296,9 +296,11 @@ public class PlayerMovement : MonoBehaviour
             return;
         }
 
-        stateMachine.SetBool("Move", true);
         translation = inputDirectionFromCameraView * speed * delta;
         translation = new Vector3(translation.x, 0, translation.z);
+        
+        if (translation != Vector3.zero)
+            stateMachine.SetBool("Move", true);
         //transform.Translate(translation, Space.World);
         rb.MovePosition(center + translation);
     }
