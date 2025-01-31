@@ -255,7 +255,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Marco Consoli
+  m_text: Marco Consoli - 3D Art, Graphic Design, Sound Design
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 0624d6623c9f50e4faec9918c229f3aa, type: 2}
   m_sharedMaterial: {fileID: -2330009282243218073, guid: 0624d6623c9f50e4faec9918c229f3aa, type: 2}
@@ -320,7 +320,7 @@ MonoBehaviour:
   m_VertexBufferAutoSizeReduction: 0
   m_useMaxVisibleDescender: 1
   m_pageToDisplay: 1
-  m_margin: {x: 0, y: 0, z: 0, w: 0}
+  m_margin: {x: 0, y: 0, z: -882.576, w: 0}
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
   m_hasFontAssetChanged: 0
@@ -1091,7 +1091,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Beatrice Lenzi
+  m_text: Beatrice Lenzi - 2D and 3D Art
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 0624d6623c9f50e4faec9918c229f3aa, type: 2}
   m_sharedMaterial: {fileID: -2330009282243218073, guid: 0624d6623c9f50e4faec9918c229f3aa, type: 2}
@@ -1156,7 +1156,7 @@ MonoBehaviour:
   m_VertexBufferAutoSizeReduction: 0
   m_useMaxVisibleDescender: 1
   m_pageToDisplay: 1
-  m_margin: {x: 0, y: 0, z: 0, w: 0}
+  m_margin: {x: 0, y: 0, z: -611.9525, w: 0}
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
   m_hasFontAssetChanged: 0
@@ -2947,7 +2947,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Matteo Mastropasqua
+  m_text: Matteo Mastropasqua - Programming
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 0624d6623c9f50e4faec9918c229f3aa, type: 2}
   m_sharedMaterial: {fileID: -2330009282243218073, guid: 0624d6623c9f50e4faec9918c229f3aa, type: 2}
@@ -3012,7 +3012,7 @@ MonoBehaviour:
   m_VertexBufferAutoSizeReduction: 0
   m_useMaxVisibleDescender: 1
   m_pageToDisplay: 1
-  m_margin: {x: 0, y: 0, z: 0, w: 0}
+  m_margin: {x: 0, y: 0, z: -677.3427, w: 0}
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
   m_hasFontAssetChanged: 0
@@ -3377,7 +3377,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Riccardo Ortombina
+  m_text: Riccardo Ortombina - Game Design, Graphic Design, Additional Programming
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 0624d6623c9f50e4faec9918c229f3aa, type: 2}
   m_sharedMaterial: {fileID: -2330009282243218073, guid: 0624d6623c9f50e4faec9918c229f3aa, type: 2}
@@ -3442,7 +3442,7 @@ MonoBehaviour:
   m_VertexBufferAutoSizeReduction: 0
   m_useMaxVisibleDescender: 1
   m_pageToDisplay: 1
-  m_margin: {x: 0, y: 0, z: 0, w: 0}
+  m_margin: {x: 0, y: 0, z: -831.7539, w: 0}
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
   m_hasFontAssetChanged: 0
