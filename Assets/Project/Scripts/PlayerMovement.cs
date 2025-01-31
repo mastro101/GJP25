@@ -29,6 +29,10 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField] CinemachineFreeLook freeCamera;
     [SerializeField] CinemachineVirtualCamera lockOnCamera;
     [SerializeField] PlayerStateMachine stateMachine;
+    [SerializeField] GameObject body;
+    [SerializeField] GameObject limonioCutted;
+    [SerializeField] Rigidbody leftHalf;
+    [SerializeField] Rigidbody rightHalf;
 
     //[SerializeField] float cameraSpeed;
     public System.Action onDashStarted;
@@ -105,6 +109,7 @@ public class PlayerMovement : MonoBehaviour
         attackAction = InputSystem.actions.FindAction("Player/Attack");
         attackAction.performed += AttackAction_performed;
         damageData.OnDamage_event += SetGotHit;
+        damageData.OnDeath_event += Death;
 
         dashCooldownTimer = 0;
         dashDurationTimer = 0;
@@ -131,6 +136,15 @@ public class PlayerMovement : MonoBehaviour
         dashAction.performed -= DashAction_performed;
         attackAction.performed -= AttackAction_performed;
         damageData.OnDamage_event -= SetGotHit;
+        damageData.OnDeath_event -= Death;
+    }
+
+    void Death()
+    {
+        limonioCutted.SetActive(true);
+        leftHalf.AddExplosionForce(50, transform.position, 1);
+        body.SetActive(false);
+        this.enabled = false;
     }
 
     void SetGotHit(int dontuse)
