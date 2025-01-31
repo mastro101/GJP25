@@ -113,6 +113,11 @@ public class PlayerMovement : MonoBehaviour
         lockOn = false;
     }
 
+    private void Start()
+    {
+        damageData.Health = damageData.MaxHealth;
+    }
+
     private void OnEnable()
     {
         InputUser.onChange += InputUser_onChange;

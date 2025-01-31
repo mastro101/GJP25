@@ -1,5 +1,6 @@
 using UnityEngine;
 using Eastermaster.Helper;
+using UnityEngine.Timeline;
 
 public class Katana : Enemy
 {
@@ -19,6 +20,11 @@ public class Katana : Enemy
         canSlowLookingAtPlayer = true;
         player = FindFirstObjectByType<PlayerMovement>();
         animator = this.GetComponentInNearChildren<Animator>();
+    }
+
+    private void Start()
+    {
+        (this as IDamageable).Health = MaxHealth;
     }
 
     private void OnEnable()
@@ -50,7 +56,7 @@ public class Katana : Enemy
             IDamageable damagable = collider.GetComponentInNearParents<IDamageable>();
             if (damagable == null)
                 continue;
-            if (damagable is Enemy)
+            if (damagable == this as IDamageable)
                 continue;
             damagable.Damage(damage);
             return true;
