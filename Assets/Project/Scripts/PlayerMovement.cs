@@ -399,5 +399,4 @@ public class PlayerMovement : MonoBehaviour
         DashHandler(Time.fixedDeltaTime);
         AttackHandler(Time.fixedDeltaTime);
     }
-
 }

@@ -12,4 +12,14 @@ public class ButtonGeneriAction : MonoBehaviour
     {
         SceneManager.LoadScene(name);
     }
+
+    public void SetActiveTrue(GameObject toAble)
+    {
+        toAble.SetActive(true);
+    }
+
+    public void SetActiveFalse(GameObject toDisable)
+    {
+        toDisable.SetActive(false);
+    }
 }
