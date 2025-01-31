@@ -7,6 +7,7 @@ public class DamageableView : MonoBehaviour
     [SerializeField][SerializeInterface(typeof(IDamageable))] GameObject _damageable;
     [SerializeField] Image image;
     IDamageable damageable;
+    float currentHealth;
     private void OnEnable()
     {
         damageable = _damageable.GetComponent<IDamageable>();
@@ -23,9 +24,18 @@ public class DamageableView : MonoBehaviour
     {
         if (health > 0)
         {
-            image.fillAmount = (float)health / (float)damageable.MaxHealth;
+            currentHealth = health;
+            //image.fillAmount = (float)health / (float)damageable.MaxHealth;
         }
         else
-            image.fillAmount = 0;
+            currentHealth = 0;
+    }
+
+    private void Update()
+    {
+        if (image.fillAmount != (currentHealth / (float)damageable.MaxHealth))
+        {
+            image.fillAmount = Mathf.Lerp(image.fillAmount, (currentHealth / (float)damageable.MaxHealth), 0.4f);
+        }
     }
 }

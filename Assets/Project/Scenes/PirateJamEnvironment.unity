@@ -27824,6 +27824,11 @@ Mesh:
     offset: 0
     size: 0
     path: 
+--- !u!82 &1931763886 stripped
+AudioSource:
+  m_CorrespondingSourceObject: {fileID: 6382813171212044750, guid: 1732c7c791a31ab468334c217bf37077, type: 3}
+  m_PrefabInstance: {fileID: 671498688}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1969411007
 GameObject:
   m_ObjectHideFlags: 0
@@ -28133,6 +28138,10 @@ PrefabInstance:
       propertyPath: boss
       value: 
       objectReference: {fileID: 2073944681}
+    - target: {fileID: 6846596107539593571, guid: 37a0167e6cb47bc4b8d13176195e7b3b, type: 3}
+      propertyPath: bossSoundtrack
+      value: 
+      objectReference: {fileID: 1931763886}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -28189,6 +28198,14 @@ PrefabInstance:
     - target: {fileID: 2713879992291997804, guid: 0e9445b308405bd45ba4609941c6f0ed, type: 3}
       propertyPath: m_Name
       value: Sparkles
+      objectReference: {fileID: 0}
+    - target: {fileID: 3700838834976035471, guid: 0e9445b308405bd45ba4609941c6f0ed, type: 3}
+      propertyPath: LightsModule.enabled
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3700838834976035471, guid: 0e9445b308405bd45ba4609941c6f0ed, type: 3}
+      propertyPath: InitialModule.startLifetime.scalar
+      value: 0.3
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

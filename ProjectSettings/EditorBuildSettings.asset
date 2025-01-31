@@ -6,6 +6,9 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
+    path: Assets/Project/Scenes/MainMenu.unity
+    guid: 6e9b36d35e14c3743a7ffa3e838be354
+  - enabled: 1
     path: Assets/Project/Scenes/PirateJamEnvironment.unity
     guid: c7898882e38662a4081cf22d595b6761
   m_configObjects:

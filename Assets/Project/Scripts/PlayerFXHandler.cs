@@ -8,6 +8,8 @@ public class PlayerFXHandler : MonoBehaviour
     [Header("VFX")]
     [SerializeField] ParticleSystem DashTrails;
     [SerializeField] ParticleSystem DashSmoke;
+    [SerializeField] ParticleSystem AttackSmoke;
+    [SerializeField] ParticleSystem AttackSparkles;
 
     [Header("SFX")]
     [SerializeField] AudioClip jumpStart;
@@ -19,6 +21,7 @@ public class PlayerFXHandler : MonoBehaviour
         playerMovement = GetComponent<PlayerMovement>();
         playerMovement.onDashStarted += PlayDashFX;
         playerMovement.onJumpStarted += PlayJumpStartedFX;
+        playerMovement.onAttackStarted += PlayAttackStartedFX;
     }
 
     void PlayDashFX()
@@ -34,14 +37,16 @@ public class PlayerFXHandler : MonoBehaviour
         playerMovement.GetComponent<AudioSource>().PlayOneShot(jumpStart);
     }
 
+    void PlayAttackStartedFX()
+    {
+        AttackSmoke.Play();
+        AttackSparkles.Play();
+        playerMovement.GetComponent<AudioSource>().PlayOneShot(dashStart);
+    }
+
     void OnDisable()
     {
         playerMovement.onDashStarted -= PlayDashFX;
         playerMovement.onJumpStarted -= PlayJumpStartedFX;
-    }
-
-    public void PlayPlayerStepSound()
-    {
-
     }
 }

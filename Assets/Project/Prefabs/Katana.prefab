@@ -174,12 +174,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 74f2530825246974cb0a3fdb927d69ca, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _maxHealth: 10
-  _health: 2
+  _maxHealth: 40
+  _health: 40
   hitBoxTop: {fileID: 5352174190469565476}
   hitBoxBottom: {fileID: 1819559672415924737}
   hitBoxRadius: 0.15
-  temp: 0
 --- !u!114 &4544207853600925601
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -587,6 +586,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   katanaStep: {fileID: 8300000, guid: 48e602ac327792f4598afecb220b8bc2, type: 3}
   katanaSlash: {fileID: 8300000, guid: 257d4e16fa4524c499a898015b27e913, type: 3}
+  katanaGotHit: {fileID: 8300000, guid: c7e9b8c71d9100a43b739e0748cdb9b4, type: 3}
 --- !u!82 &3048882024624359250
 AudioSource:
   m_ObjectHideFlags: 0
