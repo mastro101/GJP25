@@ -53,6 +53,7 @@ public class Katana : Enemy
         var tree = this.GetComponentInNearParents<BehaviorGraphAgent>();
         tree.enabled = false;
         animator.gameObject.SetActive(false);
+        Cursor.visible = true;
     }
 
     IEnumerator ShowGameOver()

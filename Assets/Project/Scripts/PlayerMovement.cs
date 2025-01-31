@@ -126,6 +126,7 @@ public class PlayerMovement : MonoBehaviour
     {
         damageData.Health = damageData.MaxHealth;
         gameOverPanel.SetActive(false);
+        Cursor.visible = false;
     }
 
     private void OnEnable()
@@ -158,6 +159,7 @@ public class PlayerMovement : MonoBehaviour
     IEnumerator ShowGameOver()
     {
         yield return new WaitForSeconds(3);
+        Cursor.visible = true;
         gameOverPanel.SetActive(true);
     }
 
