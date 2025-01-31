@@ -3778,6 +3778,14 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5100515687419633273, guid: 1732c7c791a31ab468334c217bf37077, type: 3}
+      propertyPath: gameOverText
+      value: 
+      objectReference: {fileID: 1452889425}
+    - target: {fileID: 5100515687419633273, guid: 1732c7c791a31ab468334c217bf37077, type: 3}
+      propertyPath: gameOverPanel
+      value: 
+      objectReference: {fileID: 1538719518}
     - target: {fileID: 5644131156132563137, guid: 1732c7c791a31ab468334c217bf37077, type: 3}
       propertyPath: m_LocalRotation.w
       value: 0.98939943
@@ -3800,11 +3808,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8952056892355096682, guid: 1732c7c791a31ab468334c217bf37077, type: 3}
       propertyPath: m_LocalRotation.y
-      value: 0.0000000293435
+      value: 0.000000029343497
       objectReference: {fileID: 0}
     - target: {fileID: 8952056892355096682, guid: 1732c7c791a31ab468334c217bf37077, type: 3}
       propertyPath: m_LocalRotation.z
-      value: 0.0000000052093907
+      value: 0.00000000520939
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -12626,7 +12634,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &908450709
 RectTransform:
   m_ObjectHideFlags: 0
@@ -24132,7 +24140,7 @@ MonoBehaviour:
   m_fontColor32:
     serializedVersion: 2
     rgba: 4282338044
-  m_fontColor: {r: 0.9882353, g: 0.291, b: 0.248, a: 1}
+  m_fontColor: {r: 0.9882353, g: 0.8901961, b: 0.4627451, a: 1}
   m_enableVertexGradient: 0
   m_colorMode: 3
   m_fontColorGradient:
@@ -24383,7 +24391,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1538719519
 RectTransform:
   m_ObjectHideFlags: 0
@@ -28766,6 +28774,14 @@ PrefabInstance:
       propertyPath: sparksObject
       value: 
       objectReference: {fileID: 26886047}
+    - target: {fileID: 3929406792959813664, guid: 7a9b0211026a31948983a729dcc95349, type: 3}
+      propertyPath: gameOverText
+      value: 
+      objectReference: {fileID: 1452889425}
+    - target: {fileID: 3929406792959813664, guid: 7a9b0211026a31948983a729dcc95349, type: 3}
+      propertyPath: gameOverPanel
+      value: 
+      objectReference: {fileID: 1538719518}
     - target: {fileID: 4080970918108857749, guid: 7a9b0211026a31948983a729dcc95349, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0

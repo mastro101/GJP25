@@ -2,7 +2,9 @@ using Cinemachine;
 using Eastermaster;
 using Eastermaster.Helper;
 using System;
+using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.InputSystem.Users;
@@ -33,6 +35,8 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField] GameObject limonioCutted;
     [SerializeField] Rigidbody leftHalf;
     [SerializeField] Rigidbody rightHalf;
+    [SerializeField] GameObject gameOverPanel;
+    [SerializeField] TextMeshProUGUI gameOverText;
 
     //[SerializeField] float cameraSpeed;
     public System.Action onDashStarted;
@@ -121,6 +125,7 @@ public class PlayerMovement : MonoBehaviour
     private void Start()
     {
         damageData.Health = damageData.MaxHealth;
+        gameOverPanel.SetActive(false);
     }
 
     private void OnEnable()
@@ -145,6 +150,15 @@ public class PlayerMovement : MonoBehaviour
         leftHalf.AddExplosionForce(50, transform.position, 1);
         body.SetActive(false);
         this.enabled = false;
+        gameOverText.text = "Sliced";
+        gameOverText.color = new Color(0.9882353f, 0.291f, 0.248f);
+        StartCoroutine(ShowGameOver());
+    }
+
+    IEnumerator ShowGameOver()
+    {
+        yield return new WaitForSeconds(3);
+        gameOverPanel.SetActive(true);
     }
 
     void SetGotHit(int dontuse)

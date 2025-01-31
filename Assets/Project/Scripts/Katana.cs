@@ -1,12 +1,16 @@
 using UnityEngine;
 using Eastermaster.Helper;
 using System.Collections.Generic;
+using System.Collections;
+using TMPro;
 
 public class Katana : Enemy
 {
     [SerializeField] Transform hitBoxTop;
     [SerializeField] Transform hitBoxBottom;
     [SerializeField] float hitBoxRadius = 1;
+    [SerializeField] GameObject gameOverPanel;
+    [SerializeField] TextMeshProUGUI gameOverText;
 
     Animator animator;
     PlayerMovement player;
@@ -30,11 +34,25 @@ public class Katana : Enemy
     private void OnEnable()
     {
         OnDamage_event += SetGotHit;
+        OnDeath_event += Death;
     }
 
     override protected void OnDisable()
     {
         OnDamage_event -= SetGotHit;
+    }
+
+    public void Death()
+    {
+        gameOverText.text = "Steel Shattered";
+        gameOverText.color = new Color(0.9882353f, 0.8901961f, 0.4627451f);
+        StartCoroutine(ShowGameOver());
+    }
+
+    IEnumerator ShowGameOver()
+    {
+        yield return new WaitForSeconds(3);
+        gameOverPanel.SetActive(true);
     }
 
     void SetGotHit(int dontuse)
