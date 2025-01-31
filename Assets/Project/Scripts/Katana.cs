@@ -12,6 +12,7 @@ public class Katana : Enemy
     [SerializeField] float hitBoxRadius = 1;
     [SerializeField] GameObject gameOverPanel;
     [SerializeField] TextMeshProUGUI gameOverText;
+    [SerializeField] ParticleSystem deathShatteringParticles;
 
     Animator animator;
     PlayerMovement player;
@@ -45,6 +46,7 @@ public class Katana : Enemy
 
     public void Death()
     {
+        deathShatteringParticles.Play();
         gameOverText.text = "Steel Shattered";
         gameOverText.color = new Color(0.9882353f, 0.8901961f, 0.4627451f);
         StartCoroutine(ShowGameOver());
