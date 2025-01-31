@@ -3,6 +3,7 @@ using Eastermaster.Helper;
 using System.Collections.Generic;
 using System.Collections;
 using TMPro;
+using Unity.Behavior;
 
 public class Katana : Enemy
 {
@@ -47,6 +48,9 @@ public class Katana : Enemy
         gameOverText.text = "Steel Shattered";
         gameOverText.color = new Color(0.9882353f, 0.8901961f, 0.4627451f);
         StartCoroutine(ShowGameOver());
+        var tree = this.GetComponentInNearParents<BehaviorGraphAgent>();
+        tree.enabled = false;
+        animator.gameObject.SetActive(false);
     }
 
     IEnumerator ShowGameOver()
