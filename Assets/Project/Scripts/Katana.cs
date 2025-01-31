@@ -1,6 +1,6 @@
 using UnityEngine;
 using Eastermaster.Helper;
-using UnityEngine.Timeline;
+using System.Collections.Generic;
 
 public class Katana : Enemy
 {
@@ -44,6 +44,7 @@ public class Katana : Enemy
 
     public Transform GetPlayerTransform() { return player.transform; }
 
+    List<IDamageable> hittedCollider = new List<IDamageable>();
     public bool Attack(int damage)
     {
         if (!canAttack)
@@ -58,6 +59,9 @@ public class Katana : Enemy
                 continue;
             if (damagable == this as IDamageable)
                 continue;
+            if (hittedCollider.Contains(damagable))
+                continue;
+            hittedCollider.Add(damagable);
             damagable.Damage(damage);
             return true;
         }
@@ -80,12 +84,16 @@ public class Katana : Enemy
 
     public void ToggleAttackCollide()
     {
-        canAttack = !canAttack;
+        SetAttackCollide(!canAttack);
     }
 
     public void SetAttackCollide(bool b)
     {
         canAttack = b;
+        if (canAttack == false)
+        {
+            hittedCollider.Clear();
+        }
     }
 
     public void SetSlowLookAtPlayer(bool b)
