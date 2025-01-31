@@ -1572,8 +1572,8 @@ MonoBehaviour:
   _health: 10
   _maxStamina: 10
   _stamina: 10
-  _waitTimeToGenerateStamina: 2
-  _staminaGenerateSpeed: 1.5
+  _waitTimeToGenerateStamina: 1.7
+  _staminaGenerateSpeed: 2
   power: 1
 --- !u!1 &6853815995917353796
 GameObject:
