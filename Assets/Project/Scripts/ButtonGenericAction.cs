@@ -1,5 +1,6 @@
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 public class ButtonGenericAction : MonoBehaviour
 {
@@ -21,5 +22,10 @@ public class ButtonGenericAction : MonoBehaviour
     public void SetActiveFalse(GameObject toDisable)
     {
         toDisable.SetActive(false);
+    }
+
+    public void SetActiveButton(Button button)
+    {
+        button.Select();
     }
 }
