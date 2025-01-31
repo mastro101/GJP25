@@ -5,6 +5,7 @@ public class ArenaLockTrigger : MonoBehaviour
 {
     [SerializeField] GameObject wall;
     [SerializeField] GameObject boss;
+    [SerializeField] AudioSource bossSoundtrack;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
@@ -17,5 +18,6 @@ public class ArenaLockTrigger : MonoBehaviour
     {
         wall.GetComponent<BoxCollider>().enabled = true;
         boss.GetComponent<BehaviorGraphAgent>().enabled = true;
+        bossSoundtrack.Play();
     }
 }
