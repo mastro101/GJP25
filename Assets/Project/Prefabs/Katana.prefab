@@ -174,8 +174,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 74f2530825246974cb0a3fdb927d69ca, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _maxHealth: 40
-  _health: 40
+  _maxHealth: 15
+  _health: 15
   hitBoxTop: {fileID: 5352174190469565476}
   hitBoxBottom: {fileID: 1819559672415924737}
   hitBoxRadius: 0.15
@@ -596,7 +596,7 @@ AudioSource:
   m_GameObject: {fileID: 4242263132499408188}
   m_Enabled: 1
   serializedVersion: 4
-  OutputAudioMixerGroup: {fileID: 0}
+  OutputAudioMixerGroup: {fileID: 24300002, guid: 7715cbd43ec509b46bcc0a69f11950b1, type: 2}
   m_audioClip: {fileID: 0}
   m_Resource: {fileID: 0}
   m_PlayOnAwake: 0

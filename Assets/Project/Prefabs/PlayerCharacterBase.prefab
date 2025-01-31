@@ -254,8 +254,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2316472879544647254}
   serializedVersion: 2
-  m_LocalRotation: {x: 0.0000000294864, y: 0.000000029595272, z: 0.00000000887902, w: 1}
-  m_LocalPosition: {x: -2.220446e-16, y: -3.803191e-24, z: 1.2676675e-23}
+  m_LocalRotation: {x: 0.0000000294864, y: 0.000000028545342, z: 0.000000008564026, w: 1}
+  m_LocalPosition: {x: 1.3322676e-15, y: -0.000000028545331, z: -0.000000008564024}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -691,7 +691,7 @@ AudioSource:
   m_GameObject: {fileID: 3669487568934010592}
   m_Enabled: 1
   serializedVersion: 4
-  OutputAudioMixerGroup: {fileID: 0}
+  OutputAudioMixerGroup: {fileID: 24300002, guid: 72ed4cd80301aaf4d9507e9ef4810863, type: 2}
   m_audioClip: {fileID: 8300000, guid: 725c909d1cdf7de4c8ba82a1e83c4d66, type: 3}
   m_Resource: {fileID: 8300000, guid: 725c909d1cdf7de4c8ba82a1e83c4d66, type: 3}
   m_PlayOnAwake: 0
@@ -1074,20 +1074,20 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   playerData: {fileID: 6406640587670407528}
-  speed: 5
+  speed: 4.5
   jumpForce: 7.5
   jumpStaminaCost: 2
   dashForce: 15
   dashDuration: 0.2
   dashStaminaCost: 2
-  dashCooldown: 2
-  attackRange: 1
+  dashCooldown: 0.7
+  attackRange: 0.5
   attackDamage: 1
   attackDashForce: 15
   attackDuration: 0.2
-  attackStaminaCost: 2
-  attackCooldown: 2
-  attackOffset: {x: 0, y: 0, z: 0}
+  attackStaminaCost: 3
+  attackCooldown: 1
+  attackOffset: {x: 0, y: 0.5, z: 0}
   freeCamera: {fileID: 6656830554239473818}
   lockOnCamera: {fileID: 6106345177861052864}
   stateMachine: {fileID: 8080282977889527482}
@@ -1172,7 +1172,7 @@ AudioSource:
   m_GameObject: {fileID: 6112503814458736814}
   m_Enabled: 1
   serializedVersion: 4
-  OutputAudioMixerGroup: {fileID: 0}
+  OutputAudioMixerGroup: {fileID: 24300002, guid: 7715cbd43ec509b46bcc0a69f11950b1, type: 2}
   m_audioClip: {fileID: 0}
   m_Resource: {fileID: 0}
   m_PlayOnAwake: 0
@@ -1574,7 +1574,7 @@ MonoBehaviour:
   _stamina: 10
   _waitTimeToGenerateStamina: 2
   _staminaGenerateSpeed: 1.5
-  power: 0
+  power: 1
 --- !u!1 &6853815995917353796
 GameObject:
   m_ObjectHideFlags: 0
@@ -1675,7 +1675,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7634512066861421610}
   serializedVersion: 2
-  m_LocalRotation: {x: 0.14521989, y: 0.00000005988029, z: 0.0000000087889775, w: 0.98939943}
+  m_LocalRotation: {x: 0.14521992, y: 0.000000029486404, z: 0.00000000432789, w: 0.98939943}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -1754,8 +1754,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7687744907527530086}
   serializedVersion: 2
-  m_LocalRotation: {x: 0.115511246, y: 0.000000035071178, z: 0.000000006226234, w: 0.9933062}
-  m_LocalPosition: {x: -2.220446e-16, y: -3.803191e-24, z: 1.2676675e-23}
+  m_LocalRotation: {x: 0.11551128, y: 0.0000000293435, z: 0.0000000052093907, w: 0.9933062}
+  m_LocalPosition: {x: 1.3322676e-15, y: -0.000000028545331, z: -0.000000008564024}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
