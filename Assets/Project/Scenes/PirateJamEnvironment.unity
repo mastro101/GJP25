@@ -3857,15 +3857,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5644131156132563137, guid: 1732c7c791a31ab468334c217bf37077, type: 3}
       propertyPath: m_LocalRotation.x
-      value: 0.14522001
+      value: 0.14521992
       objectReference: {fileID: 0}
     - target: {fileID: 5644131156132563137, guid: 1732c7c791a31ab468334c217bf37077, type: 3}
       propertyPath: m_LocalRotation.y
-      value: -0.000000070057396
+      value: 0.000000029486404
       objectReference: {fileID: 0}
     - target: {fileID: 5644131156132563137, guid: 1732c7c791a31ab468334c217bf37077, type: 3}
       propertyPath: m_LocalRotation.z
-      value: -0.000000010282722
+      value: 0.00000000432789
       objectReference: {fileID: 0}
     - target: {fileID: 6406640587670407528, guid: 1732c7c791a31ab468334c217bf37077, type: 3}
       propertyPath: m_Name
@@ -3921,19 +3921,19 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8952056892355096682, guid: 1732c7c791a31ab468334c217bf37077, type: 3}
       propertyPath: m_LocalRotation.w
-      value: 0.99330616
+      value: 0.9933062
       objectReference: {fileID: 0}
     - target: {fileID: 8952056892355096682, guid: 1732c7c791a31ab468334c217bf37077, type: 3}
       propertyPath: m_LocalRotation.x
-      value: 0.11551122
+      value: 0.11551128
       objectReference: {fileID: 0}
     - target: {fileID: 8952056892355096682, guid: 1732c7c791a31ab468334c217bf37077, type: 3}
       propertyPath: m_LocalRotation.y
-      value: -0.000000030903244
+      value: 0.0000000293435
       objectReference: {fileID: 0}
     - target: {fileID: 8952056892355096682, guid: 1732c7c791a31ab468334c217bf37077, type: 3}
       propertyPath: m_LocalRotation.z
-      value: -0.000000005486296
+      value: 0.0000000052093907
       objectReference: {fileID: 0}
     - target: {fileID: 8985274134923109798, guid: 1732c7c791a31ab468334c217bf37077, type: 3}
       propertyPath: m_FollowOffset.y
@@ -29050,6 +29050,11 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 7a9b0211026a31948983a729dcc95349, type: 3}
+--- !u!1 &2006561073 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1585388113368643444, guid: 7a9b0211026a31948983a729dcc95349, type: 3}
+  m_PrefabInstance: {fileID: 2006561072}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &2073944681 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 1920365802190999087, guid: 7a9b0211026a31948983a729dcc95349, type: 3}
@@ -29111,6 +29116,10 @@ PrefabInstance:
       propertyPath: boss
       value: 
       objectReference: {fileID: 2073944681}
+    - target: {fileID: 6846596107539593571, guid: 37a0167e6cb47bc4b8d13176195e7b3b, type: 3}
+      propertyPath: bossHP
+      value: 
+      objectReference: {fileID: 2006561073}
     - target: {fileID: 6846596107539593571, guid: 37a0167e6cb47bc4b8d13176195e7b3b, type: 3}
       propertyPath: bossSoundtrack
       value: 
